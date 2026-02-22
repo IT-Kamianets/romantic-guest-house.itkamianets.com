@@ -5,7 +5,8 @@
 		"ng": "ng",
 		"start": "ng serve",
 		"build": "ng build",
-		"build:gh": "ng build --configuration production --base-href /bilya-richky.itkamianets.com/ --deploy-url /bilya-richky.itkamianets.com/ && node scripts/copy-404.mjs",
+		"build:gh": "ng build --configuration production --base-href /romantic-guest-house.itkamianets.com/ --deploy-url /romantic-guest-house.itkamianets.com/ && node scripts/copy-404.mjs",
+		"download:romantic-images": "node scripts/download-romantic-images.mjs",
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
 		"serve:ssr:theme-bootstrap": "node dist/theme-bootstrap/server/server.mjs"

@@ -1,0 +1,32 @@
+.pill-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: var(--sp-3);
+}
+
+.pill-grid__item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 12px;
+	border-radius: 999px;
+	border: 1px solid color-mix(in srgb, var(--c-accent) 35%, var(--c-border) 65%);
+	background: color-mix(in srgb, var(--c-accent) 12%, var(--c-surface-1) 88%);
+	color: var(--c-text-secondary);
+	font-size: 14px;
+}
+
+.pill-grid__item i {
+	font-size: 18px;
+	color: var(--c-primary);
+}
+
+.badge-soft--paid {
+	margin-left: auto;
+	font-size: 11px;
+	padding: 4px 8px;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--c-accent) 18%, var(--c-surface-1) 82%);
+	color: var(--c-text);
+	border: 1px solid color-mix(in srgb, var(--c-accent) 35%, var(--c-border) 65%);
+}

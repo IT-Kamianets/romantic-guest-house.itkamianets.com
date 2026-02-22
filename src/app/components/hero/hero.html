@@ -1,52 +1,106 @@
-﻿<section class="hero">
+<section class="hero section--A">
+
 	<div class="hero__bg"></div>
+
 	<div class="container-lg px-4 py-5 py-lg-6">
+
 		<div class="hero__grid">
+
 			<div class="hero__content">
-				<span class="section-kicker">Riverside Boutique Hotel</span>
+
+				<span class="section-kicker">Boutique Guest House</span>
+
 				<h1 class="hero__title">
-					Stay by the Smotrych river at <span class="text-accent">Bilya Richky</span>
+
+					Romantic Guest House - quiet canyon stays in Kamianets-Podilskyi
+
 				</h1>
+
 				<p class="hero__subtitle">
-					A calm, warm retreat with canyon views, handcrafted interiors, and easy access to
-					Kamianets-Podilskyi Old Town.
+
+					Oriental-inspired rooms, a private courtyard, and a hot vat (chan) by the Smotrych
+
+					canyon - a calm stay within walking distance of the Old Town.
+
 				</p>
+
 				<div class="hero__actions">
+
 					<a routerLink="/rooms" class="btn btn-primary btn-lg">View rooms</a>
-					<a routerLink="/booking" class="btn btn-outline-primary btn-lg">Book now</a>
+
+					<a routerLink="/booking" class="btn btn-outline-primary btn-lg">Request a booking</a>
+
 				</div>
+
 				<div class="hero__details">
+
 					<div>
+
 						<span class="hero__detail-label">Check-in</span>
-						<span class="hero__detail-value">14:00</span>
+
+						<span class="hero__detail-value">14:00-00:00</span>
+
 					</div>
+
 					<div>
+
 						<span class="hero__detail-label">Check-out</span>
-						<span class="hero__detail-value">12:00</span>
+
+						<span class="hero__detail-value">11:00-12:00</span>
+
 					</div>
+
 					<div>
+
 						<span class="hero__detail-label">Location</span>
-						<span class="hero__detail-value">Smotrych canyon</span>
+
+						<span class="hero__detail-value">Rus'ka Street 3, Kamianets-Podilskyi, 32318, Ukraine</span>
+
 					</div>
+
 				</div>
+
 			</div>
 
+
+
 			<div class="hero__media">
-				<div class="hero__image-wrapper">
+
+				<div class="hero__image-wrapper hero-media">
+
 					<img
-						src="assets/img/bilya-richky/exterior/exterior-4.jpg"
-						alt="Bilya Richky Hotel terraces and canyon views"
+
+						[src]="heroImage"
+
+						(error)="setHeroFallback()"
+
+						alt="Romantic Guest House exterior and courtyard - Kamianets-Podilskyi"
+
 						class="hero__image"
+
 					/>
+
 					<div class="hero__caption">
-						<div class="hero__caption-title">Canyon terraces</div>
-						<div class="hero__caption-text">Sunset tea with river views</div>
+
+						<div class="hero__caption-title">Courtyard calm</div>
+
+						<div class="hero__caption-text">Hot vat (chan) and quiet seating</div>
+
 					</div>
+
 				</div>
+
 				<div class="hero__badge">
-					<span class="badge-soft">Boutique comfort · Riverside calm</span>
+
+					<span class="badge-soft">Boutique comfort - Riverside calm</span>
+
 				</div>
+
 			</div>
+
 		</div>
+
 	</div>
+
 </section>
+

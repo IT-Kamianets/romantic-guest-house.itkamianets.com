@@ -1,0 +1,7 @@
+<div class="pill-grid">
+	<div class="pill-grid__item" *ngFor="let item of items">
+		<i class="bi" *ngIf="item.icon" [ngClass]="item.icon"></i>
+		<span>{{ item.label }}</span>
+		<span class="badge-soft badge-soft--paid" *ngIf="item.paid">Paid separately</span>
+	</div>
+</div>

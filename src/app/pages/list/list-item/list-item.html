@@ -1,28 +1,35 @@
-﻿<article class="room-card">
+<article
+	class="room-card"
+	[ngClass]="{ 'room-card--horizontal': variant === 'horizontal' }"
+>
 	<div class="room-card__media">
-		<img [src]="product.image" [alt]="product.title" />
-		<span class="room-card__badge" *ngIf="product.isNew">New</span>
+		<img [src]="product.image" [alt]="product.title" loading="lazy" />
+		<span class="room-card__tag">{{ product.category }}</span>
 	</div>
-	<div class="room-card__body">
-		<div class="room-card__meta">
-			<span class="room-card__category">{{ product.category }}</span>
-			<span class="room-card__size" *ngIf="product.specifications?.Size">
-				{{ product.specifications?.Size }}
-			</span>
+
+	<div class="room-card__content">
+		<div class="room-card__header">
+			<h3 class="room-card__title">{{ product.title }}</h3>
+			<p class="room-card__description">{{ product.description }}</p>
 		</div>
-		<h3 class="room-card__title">{{ product.title }}</h3>
-		<p class="room-card__description">{{ product.description }}</p>
-		<ul class="room-card__details">
-			<li *ngFor="let item of highlights">{{ item }}</li>
-		</ul>
+
+		<div class="room-card__chips">
+			<span class="chip" *ngFor="let item of highlights">{{ item }}</span>
+		</div>
+
 		<div class="room-card__footer">
 			<div>
-				<span class="room-card__price">From UAH {{ product.price }}</span>
-				<span class="room-card__note">per night</span>
+				<span class="room-card__price">From UAH {{ product.price }} / night (seasonal)</span>
+				<span class="room-card__note">Exact price depends on dates—confirm during booking request.</span>
 			</div>
-			<button class="btn btn-primary btn-sm" type="button" (click)="bookNow($event)">
-				Book now
-			</button>
+			<div class="room-card__actions">
+				<a *ngIf="showDetails" routerLink="/rooms" class="btn btn-outline-secondary">
+					See details
+				</a>
+				<button class="btn btn-primary" type="button" (click)="bookNow($event)">
+					Request booking
+				</button>
+			</div>
 		</div>
 	</div>
 </article>

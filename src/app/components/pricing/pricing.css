@@ -31,12 +31,24 @@ h2,
 	border-radius: calc(var(--radius-card) + 6px) !important;
 }
 
-/* keep Pro card readable across modes */
-.bg-dark {
-	background: var(--c-text-secondary) !important;
+.pricing-card--highlight {
+	background: var(--c-primary);
+	color: var(--c-primary-contrast);
 }
-.text-white-50 {
-	opacity: 0.72;
+
+.pricing-card--highlight .text-secondary,
+.pricing-card--highlight .pricing-muted {
+	color: color-mix(in srgb, var(--c-primary-contrast) 75%, transparent) !important;
+}
+
+.pricing-card--highlight .badge-soft {
+	background: color-mix(in srgb, var(--c-primary-contrast) 15%, var(--c-primary) 85%);
+	border-color: color-mix(in srgb, var(--c-primary-contrast) 20%, var(--c-primary) 80%);
+	color: var(--c-primary-contrast);
+}
+
+.pricing-muted {
+	color: var(--c-text-muted);
 }
 
 /* buttons */
@@ -49,7 +61,7 @@ h2,
 }
 
 .btn-light {
-	background: #fff !important;
-	border-color: #fff !important;
+	background: var(--c-surface-1) !important;
+	border-color: var(--c-border) !important;
 	color: var(--c-text-secondary) !important;
 }

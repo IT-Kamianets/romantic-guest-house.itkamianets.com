@@ -1,32 +1,39 @@
-﻿.testimonials {
-	background: var(--c-bg-secondary);
+.testimonials__header {
+	display: grid;
+	gap: var(--sp-2);
+	margin-bottom: var(--sp-4);
+}
+
+.testimonials__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: var(--sp-3);
 }
 
 .testimonial-card {
-	background: var(--c-bg-tertiary);
+	background: var(--c-bg-secondary);
 	border-radius: var(--radius-card);
 	padding: var(--sp-4);
 	border: 1px solid var(--c-border);
-	box-shadow: var(--shadow-sm);
 	display: grid;
 	gap: var(--sp-3);
-	min-height: 220px;
+	box-shadow: var(--shadow-sm);
 }
 
 .testimonial-stars {
 	color: var(--c-accent);
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .testimonial-card blockquote {
 	margin: 0;
-	font-size: 16px;
+	font-size: 15px;
 	color: var(--c-text-secondary);
 	line-height: 1.6;
 }
 
 .testimonial-card figcaption {
-	font-size: 13px;
+	font-size: 12px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	color: var(--c-text-muted);

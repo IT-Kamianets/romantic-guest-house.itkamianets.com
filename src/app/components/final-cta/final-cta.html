@@ -1,17 +1,14 @@
-﻿<section class="final-cta">
+<section class="final-cta section--A">
 	<div class="container-lg px-4 py-5">
-		<div class="final-cta__card">
-			<div>
-				<p class="section-kicker">Plan your stay</p>
-				<h2>Ready for calm riverside days?</h2>
-				<p>Send your preferred dates and we will confirm availability within 24 hours.</p>
-			</div>
-			<div class="final-cta__actions">
-				<a routerLink="/booking" class="btn btn-primary btn-lg">Request a booking</a>
-				<a href="tel:+380972581734" class="btn btn-outline-secondary btn-lg">
-					Call +38 (097) 258-17-34
-				</a>
-			</div>
-		</div>
+		<app-cta-banner
+			kicker="Plan your stay"
+			title="Plan a romantic stay in Kamianets-Podilskyi"
+			body="Send a booking request and we'll confirm availability and the exact rate for your dates."
+		>
+			<a routerLink="/booking" class="btn btn-primary btn-lg">Request a booking</a>
+			<a href="tel:+380675101504" class="btn btn-outline-secondary btn-lg">
+				Call +380 67 510 15 04
+			</a>
+		</app-cta-banner>
 	</div>
 </section>

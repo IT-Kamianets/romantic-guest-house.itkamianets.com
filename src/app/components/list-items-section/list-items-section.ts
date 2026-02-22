@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Section } from '../section/section';
 import { Product } from '../../models/Product.model';
 import { ListItem } from '../../pages/list/list-item/list-item';
 import { PRODUCTS } from '../../data/products';
@@ -8,7 +9,7 @@ import { PRODUCTS } from '../../data/products';
 @Component({
 	selector: 'app-list-items-section',
 	standalone: true,
-	imports: [CommonModule, RouterLink, ListItem],
+	imports: [CommonModule, RouterLink, ListItem, Section],
 	templateUrl: './list-items-section.html',
 	styleUrls: ['./list-items-section.css'],
 })

@@ -1,0 +1,9 @@
+.wellness-spotlight__body {
+	color: var(--c-text-muted);
+	margin: 0 0 var(--sp-4);
+	max-width: 520px;
+}
+
+.wellness-spotlight__media {
+	display: grid;
+}

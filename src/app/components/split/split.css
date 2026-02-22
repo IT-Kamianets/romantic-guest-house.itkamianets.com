@@ -1,0 +1,14 @@
+.split {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: var(--sp-6);
+	align-items: center;
+}
+
+.split--reverse .split__content {
+	order: 2;
+}
+
+.split--reverse .split__media {
+	order: 1;
+}

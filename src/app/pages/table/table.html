@@ -1,78 +1,78 @@
-﻿<main class="amenities-page">
+<main class="amenities-page">
 	<section class="amenities-hero">
 		<div class="container-lg px-4 py-5">
 			<p class="section-kicker">Amenities</p>
 			<h1 class="section-title">Everything you need for a quiet stay</h1>
 			<p class="section-subtitle">
-				Thoughtful details, warm service, and small luxuries that make the riverside feel effortless.
+				Romantic details, courtyard rituals, and practical comforts for an easy stay.
 			</p>
 		</div>
 	</section>
 
-	<section class="amenities-list page-body">
+	<section class="amenities-popular">
+		<div class="container-lg px-4 py-5">
+			<app-section
+				title="Most popular amenities"
+				subtitle="The essentials guests ask for most often."
+			>
+				<app-pill-grid [items]="popularAmenities"></app-pill-grid>
+				<div section-actions>
+					<a routerLink="/booking" class="btn btn-outline-primary">Request a booking</a>
+				</div>
+			</app-section>
+		</div>
+	</section>
+
+	<section class="amenities-all">
 		<div class="container-lg px-4 pb-5">
-			<div class="row g-4">
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="amenity-card">
-						<i class="bi bi-wifi"></i>
-						<h3>Fast Wi-Fi</h3>
-						<p>Reliable connectivity in rooms, cottages, and the riverside terrace.</p>
+			<app-section
+				title="All amenities"
+				subtitle="Everything available across rooms and public areas."
+			>
+				<div class="amenities-masonry">
+					<section class="amenity-card" *ngFor="let group of amenityGroups">
+						<div class="amenities-group__title">
+							<i class="bi" [ngClass]="group.icon"></i>
+							<h3>{{ group.title }}</h3>
+						</div>
+						<ul
+							class="amenities-group__list"
+							[class.amenities-group__list--split]="isSplitList(group)"
+						>
+							<li *ngFor="let item of group.items">
+								<i class="bi bi-check2"></i>
+								<span>{{ item.label }}</span>
+								<span class="badge-soft badge-soft--paid" *ngIf="item.paid">Paid separately</span>
+							</li>
+						</ul>
+					</section>
+				</div>
+			</app-section>
+		</div>
+	</section>
+
+	<section class="amenities-notes">
+		<div class="container-lg px-4 pb-5">
+			<div class="amenities-notes__grid">
+				<div class="amenities-note">
+					<i class="bi bi-slash-circle"></i>
+					<div>
+						<h4>Non-smoking throughout</h4>
+						<p>Indoor spaces are smoke-free for guest comfort.</p>
 					</div>
 				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="amenity-card">
-						<i class="bi bi-cup-hot"></i>
-						<h3>Ukrainian cafe</h3>
-						<p>Seasonal menus, local ingredients, and cozy breakfasts by the canyon.</p>
+				<div class="amenities-note">
+					<i class="bi bi-paw"></i>
+					<div>
+						<h4>Pets on request</h4>
+						<p>Let us know in advance and we will confirm.</p>
 					</div>
 				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="amenity-card">
-						<i class="bi bi-droplet"></i>
-						<h3>Outdoor chany</h3>
-						<p>Herbal hot tubs by the river, bookable in advance for sunset sessions.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="amenity-card">
-						<i class="bi bi-tree"></i>
-						<h3>Garden grounds</h3>
-						<p>Quiet paths, shaded corners, and space for slow walks in the greenery.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="amenity-card">
-						<i class="bi bi-people"></i>
-						<h3>Family-friendly</h3>
-						<p>Playground area, picnic spots, and flexible room setups for families.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="amenity-card">
-						<i class="bi bi-car-front"></i>
-						<h3>Free parking</h3>
-						<p>On-site parking for guests with easy access to rooms and cottages.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="amenity-card">
-						<i class="bi bi-sun"></i>
-						<h3>Seasonal pool</h3>
-						<p>Outdoor pool open in warm months for quick refreshing dips.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="amenity-card">
-						<i class="bi bi-bell"></i>
-						<h3>Concierge help</h3>
-						<p>Local tips, taxi coordination, and help planning day trips.</p>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="amenity-card">
-						<i class="bi bi-moon-stars"></i>
-						<h3>Quiet hours</h3>
-						<p>Evenings stay calm from 22:00 to ensure restful nights.</p>
+				<div class="amenities-note">
+					<i class="bi bi-translate"></i>
+					<div>
+						<h4>Languages spoken</h4>
+						<p>Ukrainian and Russian.</p>
 					</div>
 				</div>
 			</div>
@@ -81,13 +81,14 @@
 
 	<section class="amenities-cta">
 		<div class="container-lg px-4 pb-5">
-			<div class="amenities-cta__card">
-				<div>
-					<h2>Ready to plan your stay?</h2>
-					<p>Send your preferred dates and we will confirm availability within 24 hours.</p>
-				</div>
+			<app-cta-banner
+				kicker="Ready to relax?"
+				title="Plan a romantic stay"
+				body="Send a booking request and we'll confirm availability and the exact rate for your dates."
+			>
 				<a routerLink="/booking" class="btn btn-primary">Request a booking</a>
-			</div>
+				<a href="tel:+380675101504" class="btn btn-outline-primary">Call</a>
+			</app-cta-banner>
 		</div>
 	</section>
 </main>

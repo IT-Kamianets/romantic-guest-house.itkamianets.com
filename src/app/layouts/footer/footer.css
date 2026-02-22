@@ -170,7 +170,7 @@
 
 .footer__social-link:hover {
 	background: var(--c-primary);
-	color: #ffffff;
+	color: var(--c-primary-contrast);
 	border-color: var(--c-primary);
 	transform: translateY(-2px);
 }

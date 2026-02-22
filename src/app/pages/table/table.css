@@ -1,62 +1,135 @@
-﻿.amenities-page {
+.amenities-page {
 	background: var(--c-bg-primary);
 }
 
 .amenities-hero {
 	background: var(--c-bg-secondary);
-	padding-bottom: var(--sp-5);
+	padding-bottom: var(--sp-4);
+}
+
+.amenities-masonry {
+	column-count: 3;
+	column-gap: 1.25rem;
 }
 
 .amenity-card {
+	display: inline-block;
+	width: 100%;
+	break-inside: avoid;
+	-webkit-column-break-inside: avoid;
+	margin: 0 0 1.25rem;
 	background: var(--c-bg-secondary);
 	border: 1px solid var(--c-border);
 	border-radius: var(--radius-card);
 	padding: var(--sp-4);
-	min-height: 220px;
 	box-shadow: var(--shadow-sm);
-	display: grid;
-	gap: var(--sp-2);
 }
 
-.amenity-card i {
-	font-size: 24px;
+.amenities-group__title {
+	display: flex;
+	align-items: center;
+	gap: var(--sp-2);
+	margin-bottom: var(--sp-2);
+}
+
+.amenities-group__title i {
+	font-size: 18px;
 	color: var(--c-primary);
 }
 
-.amenity-card h3 {
+.amenities-group__title h3 {
+	font-size: 18px;
+	margin: 0;
 	font-family: var(--ff-heading);
-	font-size: 20px;
-	margin: 0;
 }
 
-.amenity-card p {
+.amenities-group__list {
+	list-style: none;
+	padding: 0;
 	margin: 0;
-	color: var(--c-text-muted);
+	display: grid;
+	gap: 8px;
+	color: var(--c-text-secondary);
+	font-size: 14px;
 }
 
-.amenities-cta__card {
-	background: var(--c-bg-tertiary);
-	border-radius: var(--radius-card);
-	padding: var(--sp-5);
-	display: flex;
+.amenities-group__list--split {
+	display: block;
+	column-count: 2;
+	column-gap: 1.25rem;
+}
+
+.amenities-group__list--split li {
+	break-inside: avoid;
+	-webkit-column-break-inside: avoid;
+}
+
+.amenities-group__list li {
+	display: inline-flex;
 	align-items: center;
-	justify-content: space-between;
-	gap: var(--sp-4);
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.amenities-group__list i {
+	color: var(--c-primary);
+	font-size: 14px;
+}
+
+.badge-soft--paid {
+	font-size: 11px;
+	padding: 4px 8px;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--c-accent) 18%, var(--c-surface-1) 82%);
+	color: var(--c-text);
+	border: 1px solid color-mix(in srgb, var(--c-accent) 35%, var(--c-border) 65%);
+}
+
+.amenities-notes__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: var(--sp-3);
+}
+
+.amenities-note {
+	display: flex;
+	gap: var(--sp-3);
+	background: var(--c-bg-secondary);
 	border: 1px solid var(--c-border);
+	border-radius: var(--radius-card);
+	padding: var(--sp-4);
+	box-shadow: var(--shadow-sm);
 }
 
-.amenities-cta__card h2 {
-	margin: 0 0 var(--sp-2);
+.amenities-note i {
+	font-size: 20px;
+	color: var(--c-primary);
+	margin-top: 2px;
 }
 
-.amenities-cta__card p {
+.amenities-note h4 {
+	margin: 0 0 var(--sp-1);
+	font-size: 16px;
+}
+
+.amenities-note p {
 	margin: 0;
 	color: var(--c-text-muted);
+	font-size: 14px;
 }
 
-@media (max-width: 768px) {
-	.amenities-cta__card {
-		flex-direction: column;
-		align-items: flex-start;
+@media (max-width: 992px) {
+	.amenities-masonry {
+		column-count: 2;
+	}
+}
+
+@media (max-width: 600px) {
+	.amenities-masonry {
+		column-count: 1;
+	}
+
+	.amenities-group__list--split {
+		column-count: 1;
 	}
 }

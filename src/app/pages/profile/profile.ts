@@ -17,7 +17,7 @@ import { isPlatformBrowser } from '@angular/common';
 export class Profile implements OnInit, OnDestroy {
 
   product: Product | null = null;
-  productId: number | null = null;
+  productId: string | null = null;
   notFound = false;
   isFavorite = false;
   activeTab = 'details';
@@ -58,7 +58,7 @@ export class Profile implements OnInit, OnDestroy {
         return;
       }
 
-      this.productId = parseInt(id, 10);
+      this.productId = id;
       this.loadProduct(this.productId);
 
       if (this.isBrowser()) {
@@ -73,7 +73,7 @@ export class Profile implements OnInit, OnDestroy {
     }
   }
 
-  loadProduct(id: number): void {
+  loadProduct(id: string): void {
     const found = this.products.find(p => p.id === id);
 
     if (!found) {
@@ -99,10 +99,10 @@ export class Profile implements OnInit, OnDestroy {
     this.isFavorite = favorites.includes(this.product!.id);
   }
 
-  getFavoritesFromStorage(): number[] {
+  getFavoritesFromStorage(): string[] {
     if (!this.isBrowser()) return [];
     const stored = localStorage.getItem('favorites');
-    return stored ? JSON.parse(stored) : [];
+    return stored ? JSON.parse(stored).map((id: unknown) => String(id)) : [];
   }
 
   toggleFavorite(): void {
@@ -193,7 +193,7 @@ export class Profile implements OnInit, OnDestroy {
     this.router.navigate(['/rooms']);
   }
 
-  navigateToProduct(id: number): void {
+  navigateToProduct(id: string): void {
     this.router.navigate(['/profile', id], { replaceUrl: true });
   }
 

@@ -9,7 +9,7 @@ export interface RoomSpecifications {
 }
 
 export interface Product {
-  id: number;
+  id: string;
   title: string;
   description: string;
   price: number;
@@ -25,8 +25,9 @@ export interface Product {
   discount?: number; // Discount in %
   isNew?: boolean; // Newly added room
   specifications?: RoomSpecifications;
+  highlights?: string[];
   reviews?: ProductReview[];
-  relatedProductIds?: number[];
+  relatedProductIds?: string[];
   tags?: string[];
 }
 

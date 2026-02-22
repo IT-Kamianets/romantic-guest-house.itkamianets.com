@@ -1,76 +1,100 @@
-﻿<main class="location-page">
+<main class="location-page">
 	<section class="location-hero">
 		<div class="container-lg px-4 py-5">
 			<p class="section-kicker">Location</p>
 			<h1 class="section-title">Between the canyon and the Old Town</h1>
 			<p class="section-subtitle">
-				Bilya Richky sits on the banks of the Smotrych river, minutes from the fortress and
-				the historic center. The setting is quiet, green, and easy to reach.
+				Romantic Guest House is tucked into a quiet canyon-side street, a short walk from the
+				Old Town and key sights.
 			</p>
 		</div>
 	</section>
 
-	<section class="location-body page-body">
-		<div class="container-lg px-4 pb-5">
-			<div class="location-grid">
-				<div class="location-map">
-					<div class="location-map__embed">
-						<div class="location-map__frame">
+	<section class="location-split">
+		<div class="container-lg px-4 py-5">
+			<app-section
+				title="How to reach us"
+				subtitle="Easy access by taxi, a short walk to Old Town sights, and parking on site."
+			>
+				<app-split>
+					<div split-content>
+						<p class="location-intro">
+							Use the address below for navigation. We share exact directions after booking
+							confirmation.
+						</p>
+						<app-feature-list
+							[items]="[
+								'15 min drive from Kamianets-Podilskyi bus station',
+								'Approx. 20 min taxi from the railway station',
+								'On-site parking available for guests',
+								'Old Town is within walking distance'
+							]"
+						></app-feature-list>
+						<div class="location-address">
+							<div>
+								<span class="location-label">Address</span>
+								<strong>Rus’ka Street 3, Kamianets-Podilskyi, 32318, Ukraine</strong>
+							</div>
+							<div class="location-phones">
+								<a href="tel:+380675101504">+380 67 510 15 04</a>
+								<a href="tel:+380965145678">+380 96 514 56 78</a>
+							</div>
+						</div>
+					</div>
+					<div split-media>
+						<div class="location-map">
 							<iframe
-								title="Smotrych canyon, Kamianets-Podilskyi map"
-								src="https://www.google.com/maps?q=Smotrych%20canyon%2C%20Kamianets-Podilskyi&output=embed"
+								title="Rus’ka Street 3, Kamianets-Podilskyi map"
+								src="https://www.google.com/maps?q=Rus%27ka%20Street%203%2C%20Kamianets-Podilskyi%2C%20Ukraine&output=embed"
 								loading="lazy"
 								referrerpolicy="no-referrer-when-downgrade"
 							></iframe>
 						</div>
+						<a
+							class="location-map__link"
+							href="https://www.google.com/maps?q=Rus%27ka%20Street%203%2C%20Kamianets-Podilskyi%2C%20Ukraine"
+							target="_blank"
+							rel="noopener"
+						>
+							Open in Google Maps
+						</a>
 					</div>
-					<a
-						class="location-map__link"
-						href="https://www.google.com/maps?q=Smotrych%20canyon%2C%20Kamianets-Podilskyi"
-						target="_blank"
-						rel="noopener"
-					>
-						Open in Google Maps
-					</a>
-					<div class="location-map__note">
-						<i class="bi bi-info-circle"></i>
-						<span>Exact directions are provided after booking confirmation.</span>
-					</div>
-				</div>
+				</app-split>
+			</app-section>
+		</div>
+	</section>
 
-				<div class="location-info">
-					<div class="location-card">
-						<h3>How to reach us</h3>
-						<ul>
-							<li>15 min drive from Kamianets-Podilskyi bus station</li>
-							<li>Approx. 20 min taxi from the railway station</li>
-							<li>On-site parking available for guests</li>
-						</ul>
+	<section class="location-highlights">
+		<div class="container-lg px-4 pb-5">
+			<app-section title="Nearby highlights" subtitle="Walkable landmarks and canyon viewpoints.">
+				<div class="location-highlights__grid">
+					<div class="location-highlight">
+						<h3>Old Town</h3>
+						<p>≈900 m from the guest house.</p>
 					</div>
-					<div class="location-card">
-						<h3>Nearby highlights</h3>
-						<ul>
-							<li>Old Town and fortress - 8 minutes</li>
-							<li>Smotrych canyon viewpoints - 5 minutes</li>
-							<li>Bakota day trip - 50 minutes</li>
-							<li>Khotyn Fortress - 35 minutes</li>
-						</ul>
+					<div class="location-highlight">
+						<h3>Kamianets-Podilskyi Fortress</h3>
+						<p>≈1.1 km away with scenic views.</p>
 					</div>
-					<div class="location-card">
-						<h3>Address</h3>
-						<p>5 Onufriivska Street, Kamianets-Podilskyi, 32300</p>
-						<p class="location-info__contacts">
-							<a href="tel:+380972581734">+38 (097) 258-17-34</a>
-							<a href="mailto:info@hotel-kp.com.ua">info@hotel-kp.com.ua</a>
-						</p>
-					</div>
-					<div class="location-card location-card--cta">
-						<h3>Plan your arrival</h3>
-						<p>Tell us your dates and we will send directions and parking details.</p>
-						<a routerLink="/booking" class="btn btn-primary">Request a booking</a>
+					<div class="location-highlight">
+						<h3>Smotrych canyon viewpoints</h3>
+						<p>Nearby walking paths and overlooks.</p>
 					</div>
 				</div>
-			</div>
+			</app-section>
+		</div>
+	</section>
+
+	<section class="location-cta">
+		<div class="container-lg px-4 pb-5">
+			<app-cta-banner
+				kicker="Need help planning?"
+				title="Plan your arrival"
+				body="Send a booking request and we'll share directions and parking details."
+			>
+				<a routerLink="/booking" class="btn btn-primary">Request a booking</a>
+				<a href="tel:+380675101504" class="btn btn-outline-primary">Call</a>
+			</app-cta-banner>
 		</div>
 	</section>
 </main>

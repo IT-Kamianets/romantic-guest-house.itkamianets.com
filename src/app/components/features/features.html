@@ -1,45 +1,14 @@
-﻿<section class="amenities-teaser">
+<section class="amenities-teaser section--A">
 	<div class="container-lg px-4 py-5">
-		<div class="amenities-teaser__header">
-			<div>
-				<p class="section-kicker">Amenities</p>
-				<h2 class="section-title">Comfortful moments, all day long</h2>
-				<p class="section-subtitle">
-					Wellness rituals, cozy dining, and thoughtful services for an easy stay.
-				</p>
+		<app-section
+			kicker="Most popular amenities"
+			title="Everyday comfort, boutique calm"
+			subtitle="Top requests from recent stays at Romantic Guest House."
+		>
+			<div section-actions>
+				<a routerLink="/amenities" class="btn btn-outline-primary">Explore amenities</a>
 			</div>
-			<a routerLink="/amenities" class="btn btn-outline-primary">Explore amenities</a>
-		</div>
-
-		<div class="row g-4">
-			<div class="col-12 col-md-6 col-lg-3">
-				<div class="amenity-teaser-card">
-					<i class="bi bi-droplet"></i>
-					<h3>Outdoor chany</h3>
-					<p>Herbal hot tubs under the stars with riverside views.</p>
-				</div>
-			</div>
-			<div class="col-12 col-md-6 col-lg-3">
-				<div class="amenity-teaser-card">
-					<i class="bi bi-cup-hot"></i>
-					<h3>Ukrainian cafe</h3>
-					<p>Seasonal menus, warm breakfasts, and tea by the canyon.</p>
-				</div>
-			</div>
-			<div class="col-12 col-md-6 col-lg-3">
-				<div class="amenity-teaser-card">
-					<i class="bi bi-tree"></i>
-					<h3>Garden grounds</h3>
-					<p>Quiet paths, picnic spots, and shaded terraces.</p>
-				</div>
-			</div>
-			<div class="col-12 col-md-6 col-lg-3">
-				<div class="amenity-teaser-card">
-					<i class="bi bi-wifi"></i>
-					<h3>Fast Wi-Fi</h3>
-					<p>Reliable connectivity for longer stays and remote work.</p>
-				</div>
-			</div>
-		</div>
+			<app-pill-grid [items]="items"></app-pill-grid>
+		</app-section>
 	</div>
 </section>

@@ -1,0 +1,43 @@
+.cta-banner {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--sp-4);
+	padding: clamp(24px, 4vw, 40px);
+	border-radius: var(--radius-card);
+	border: 1px solid var(--c-border);
+	background: var(--c-bg-tertiary);
+	box-shadow: var(--shadow-sm);
+}
+
+.cta-banner__content {
+	display: grid;
+	gap: var(--sp-2);
+	max-width: 560px;
+}
+
+.cta-banner__kicker {
+	margin: 0;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: var(--c-text-muted);
+}
+
+.cta-banner__title {
+	margin: 0;
+	font-family: var(--ff-heading);
+	font-size: clamp(24px, 3vw, 34px);
+}
+
+.cta-banner__body {
+	margin: 0;
+	color: var(--c-text-muted);
+}
+
+.cta-banner__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--sp-2);
+}

@@ -1,0 +1,8 @@
+<div class="media-card">
+	<img [src]="src" [alt]="alt" class="media-card__image" loading="lazy" />
+	<div class="media-card__badge" *ngIf="badge">{{ badge }}</div>
+	<div class="media-card__caption" *ngIf="captionTitle || captionText">
+		<p class="media-card__caption-title" *ngIf="captionTitle">{{ captionTitle }}</p>
+		<p class="media-card__caption-text" *ngIf="captionText">{{ captionText }}</p>
+	</div>
+</div>

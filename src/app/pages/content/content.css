@@ -1,33 +1,54 @@
-﻿.location-page {
+.location-page {
 	background: var(--c-bg-primary);
 }
 
 .location-hero {
 	background: var(--c-bg-secondary);
-	padding-bottom: var(--sp-5);
 }
 
-.location-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-	gap: var(--sp-6);
+.location-intro {
+	color: var(--c-text-muted);
+	max-width: 520px;
 }
 
-.location-map__embed {
+.location-address {
+	margin-top: var(--sp-4);
 	background: var(--c-bg-secondary);
-	border-radius: var(--radius-card);
 	border: 1px solid var(--c-border);
+	border-radius: var(--radius-card);
+	padding: var(--sp-4);
+	display: grid;
+	gap: var(--sp-2);
 	box-shadow: var(--shadow-sm);
-	overflow: hidden;
 }
 
-.location-map__frame {
+.location-label {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: var(--c-text-muted);
+	display: block;
+}
+
+.location-phones {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--sp-3);
+	font-weight: 600;
+}
+
+.location-map {
 	position: relative;
 	aspect-ratio: 16 / 9;
+	border-radius: var(--radius-card);
+	overflow: hidden;
+	border: 1px solid var(--c-border);
+	box-shadow: var(--shadow-sm);
+	background: var(--c-bg-secondary);
 	min-height: 240px;
 }
 
-.location-map__frame iframe {
+.location-map iframe {
 	position: absolute;
 	inset: 0;
 	width: 100%;
@@ -37,9 +58,7 @@
 
 .location-map__link {
 	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-	margin-top: var(--sp-3);
+	margin-top: var(--sp-2);
 	font-weight: 600;
 	color: var(--c-text-secondary);
 	text-decoration: none;
@@ -50,56 +69,26 @@
 	text-decoration: underline;
 }
 
-.location-map__note {
-	display: flex;
-	align-items: center;
-	gap: var(--sp-2);
-	margin-top: var(--sp-3);
-	color: var(--c-text-muted);
-	font-size: 13px;
-}
-
-.location-info {
+.location-highlights__grid {
 	display: grid;
-	gap: var(--sp-4);
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: var(--sp-3);
 }
 
-.location-card {
+.location-highlight {
 	background: var(--c-bg-secondary);
+	border: 1px solid var(--c-border);
 	border-radius: var(--radius-card);
 	padding: var(--sp-4);
-	border: 1px solid var(--c-border);
 	box-shadow: var(--shadow-sm);
 }
 
-.location-card h3 {
-	font-family: var(--ff-heading);
-	margin-bottom: var(--sp-2);
+.location-highlight h3 {
+	margin: 0 0 var(--sp-2);
+	font-size: 18px;
 }
 
-.location-card ul {
-	padding-left: 16px;
+.location-highlight p {
 	margin: 0;
 	color: var(--c-text-muted);
-}
-
-.location-card p {
-	color: var(--c-text-muted);
-	margin: 0;
-}
-
-.location-info__contacts {
-	display: grid;
-	gap: 6px;
-	margin-top: var(--sp-2);
-}
-
-.location-info__contacts a {
-	color: var(--c-text-secondary);
-	text-decoration: none;
-	font-weight: 500;
-}
-
-.location-card--cta {
-	background: var(--c-bg-tertiary);
 }

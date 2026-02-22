@@ -1,54 +1,48 @@
-﻿<section class="location-teaser">
+<section class="location-showcase section--A">
 	<div class="container-lg px-4 py-5">
-		<div class="location-teaser__header">
-			<div>
-				<p class="section-kicker">Location</p>
-				<h2 class="section-title">Steps from the canyon, minutes from the Old Town</h2>
-				<p class="section-subtitle">
-					A peaceful base for exploring Kamianets-Podilskyi, with the river below and historic
-					streets nearby.
-				</p>
-			</div>
-			<a routerLink="/location" class="btn btn-outline-primary">View location</a>
-		</div>
-
-		<div class="location-teaser__grid">
-			<div class="location-teaser__map">
-				<div class="location-teaser__map-frame">
-					<iframe
-						title="Smotrych canyon, Kamianets-Podilskyi map"
-						src="https://www.google.com/maps?q=Smotrych%20canyon%2C%20Kamianets-Podilskyi&output=embed"
-						loading="lazy"
-						referrerpolicy="no-referrer-when-downgrade"
-					></iframe>
+		<app-section
+			kicker="Location"
+			title="Between the canyon and the Old Town"
+			subtitle="A quiet address within walking distance of Old Town sights and the canyon edge."
+		>
+			<app-split>
+				<div split-content>
+					<p class="location-showcase__text">
+						Romantic Guest House sits on Rus’ka Street, a calm corner with quick access to the
+						main landmarks.
+					</p>
+					<app-feature-list
+						[items]="[
+							'Old Town — about 900 m',
+							'Kamianets-Podilskyi Fortress — about 1.1 km',
+							'Smotrych canyon viewpoints — nearby'
+						]"
+					></app-feature-list>
+					<div class="location-showcase__address">
+						<i class="bi bi-geo-alt"></i>
+						<span>Rus’ka Street 3, Kamianets-Podilskyi, 32318, Ukraine</span>
+					</div>
+					<a routerLink="/location" class="btn btn-outline-primary">View location</a>
 				</div>
-				<a
-					class="location-teaser__map-link"
-					href="https://www.google.com/maps?q=Smotrych%20canyon%2C%20Kamianets-Podilskyi"
-					target="_blank"
-					rel="noopener"
-				>
-					Open in Google Maps
-				</a>
-			</div>
-			<div class="location-teaser__list">
-				<div class="location-teaser__item">
-					<span>Old Town & fortress</span>
-					<strong>8 min drive</strong>
+				<div split-media class="location-showcase__media">
+					<div class="location-showcase__map">
+						<iframe
+							title="Rus’ka Street 3, Kamianets-Podilskyi map"
+							src="https://www.google.com/maps?q=Rus%27ka%20Street%203%2C%20Kamianets-Podilskyi%2C%20Ukraine&output=embed"
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"
+						></iframe>
+					</div>
+					<a
+						class="location-showcase__link"
+						href="https://www.google.com/maps?q=Rus%27ka%20Street%203%2C%20Kamianets-Podilskyi%2C%20Ukraine"
+						target="_blank"
+						rel="noopener"
+					>
+						Open in Google Maps
+					</a>
 				</div>
-				<div class="location-teaser__item">
-					<span>Smotrych canyon viewpoints</span>
-					<strong>5 min walk</strong>
-				</div>
-				<div class="location-teaser__item">
-					<span>Bakota day trip</span>
-					<strong>50 min drive</strong>
-				</div>
-				<div class="location-teaser__item">
-					<span>Khotyn Fortress</span>
-					<strong>35 min drive</strong>
-				</div>
-			</div>
-		</div>
+			</app-split>
+		</app-section>
 	</div>
 </section>

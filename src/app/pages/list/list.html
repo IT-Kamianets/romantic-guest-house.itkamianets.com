@@ -1,27 +1,37 @@
-﻿<main class="rooms-page">
+<main class="rooms-page">
 	<section class="rooms-hero">
 		<div class="container-lg px-4 py-5">
 			<div class="rooms-hero__grid">
-				<div>
+				<div class="rooms-hero__intro">
 					<p class="section-kicker">Rooms & Prices</p>
-					<h1 class="section-title">Rooms designed for restful stays</h1>
+					<h1 class="section-title">Rooms for romantic stays</h1>
 					<p class="section-subtitle">
-						Choose from boutique rooms and cottages with canyon or garden views.
-						Rates vary by season and are confirmed with your dates.
+						Choose a deluxe double or a spacious apartment with a balcony. Rates vary by
+						dates and are confirmed with your booking request.
 					</p>
 				</div>
-				<div class="rooms-hero__note">
-					<div class="badge-soft">Seasonal pricing</div>
-					<p>
-						Prices are shown as "from" rates. We confirm the final price after
-						receiving your booking request.
-					</p>
+				<div class="rooms-hero__aside">
+					<div class="rooms-hero__card">
+						<div class="badge-soft">Seasonal pricing</div>
+						<p>
+							Prices vary by dates and demand. Use the booking request to confirm the exact
+							rate for your stay.
+						</p>
+					</div>
+					<div class="rooms-hero__card rooms-hero__card--soft">
+						<h3>Booking tips</h3>
+						<p>Let us know your dates and room preference. We confirm the exact rate by request.</p>
+					</div>
 				</div>
 			</div>
+		</div>
+	</section>
 
-			<div class="rooms-filters">
-				<div class="rooms-filters__chips">
-					<span class="rooms-filters__label">Filter</span>
+	<section class="rooms-toolbar">
+		<div class="container-lg px-4">
+			<div class="rooms-toolbar__bar">
+				<div class="rooms-toolbar__chips">
+					<span class="rooms-toolbar__label">Filter</span>
 					<button
 						*ngFor="let category of categories"
 						class="chip"
@@ -32,38 +42,57 @@
 						{{ category }}
 					</button>
 				</div>
-				<div class="rooms-filters__search">
-					<input
-						type="text"
-						class="form-control"
-						placeholder="Search by room or feature"
-						[(ngModel)]="filters.searchQuery"
-						(ngModelChange)="applyFilters()"
-					/>
-				</div>
-				<div class="rooms-filters__sort">
-					<label class="form-label">Sort</label>
-					<select class="form-select" [(ngModel)]="filters.sortBy" (change)="applyFilters()">
-						<option value="price-asc">Price: low to high</option>
-						<option value="price-desc">Price: high to low</option>
-						<option value="name">Name A-Z</option>
-					</select>
+				<button
+					class="rooms-toolbar__toggle"
+					type="button"
+					(click)="toggleFilters()"
+					[attr.aria-expanded]="filtersOpen"
+					aria-controls="rooms-filter-panel"
+				>
+					Filters
+					<i class="bi bi-sliders"></i>
+				</button>
+				<div id="rooms-filter-panel" class="rooms-toolbar__panel" [class.is-open]="filtersOpen">
+					<div class="rooms-toolbar__search">
+						<label class="form-label">Search</label>
+						<input
+							type="text"
+							class="form-control"
+							placeholder="Search by room or feature"
+							[(ngModel)]="filters.searchQuery"
+							(ngModelChange)="applyFilters()"
+						/>
+					</div>
+					<div class="rooms-toolbar__sort">
+						<label class="form-label">Sort</label>
+						<select class="form-select" [(ngModel)]="filters.sortBy" (change)="applyFilters()">
+							<option value="price-asc">Price: low to high</option>
+							<option value="price-desc">Price: high to low</option>
+							<option value="name">Name A-Z</option>
+						</select>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="rooms-grid">
+	<section class="rooms-catalog">
 		<div class="container-lg px-4 pb-5">
-			<div class="row g-4">
-				<div class="col-12 col-md-6 col-lg-4" *ngFor="let product of filteredProducts">
-					<app-list-item [product]="product"></app-list-item>
-				</div>
+			<div class="rooms-catalog__grid">
+				<app-list-item
+					*ngFor="let product of filteredProducts"
+					[product]="product"
+					variant="horizontal"
+					[showDetails]="false"
+				></app-list-item>
 			</div>
 
 			<div class="rooms-empty" *ngIf="filteredProducts.length === 0">
 				<p class="mb-2">No rooms match your filters.</p>
-				<button class="btn btn-outline-primary" (click)="filters = { category: 'All', searchQuery: '', sortBy: 'price-asc' }; applyFilters()">
+				<button
+					class="btn btn-outline-primary"
+					(click)="filters = { category: 'All', searchQuery: '', sortBy: 'price-asc' }; applyFilters()"
+				>
 					Reset filters
 				</button>
 			</div>

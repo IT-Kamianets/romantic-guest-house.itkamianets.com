@@ -99,18 +99,18 @@
 }
 
 .badge-new {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-accent) 100%);
+  color: var(--c-primary-contrast);
 }
 
 .badge-discount {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--c-accent) 0%, var(--c-primary) 100%);
+  color: var(--c-primary-contrast);
 }
 
 .badge-out {
   background-color: var(--c-text-muted);
-  color: #ffffff;
+  color: var(--c-primary-contrast);
 }
 
 /* Gallery Navigation */
@@ -118,7 +118,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: color-mix(in srgb, var(--c-surface-1) 90%, transparent);
   border: none;
   width: 40px;
   height: 40px;
@@ -133,13 +133,13 @@
 }
 
 html[data-mode='dark'] .gallery-nav {
-  background-color: rgba(52, 52, 52, 0.9);
+  background-color: color-mix(in srgb, var(--c-text) 90%, transparent);
   color: var(--c-text-primary);
 }
 
 .gallery-nav:hover {
   background-color: var(--c-primary);
-  color: #ffffff;
+  color: var(--c-primary-contrast);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -181,7 +181,7 @@ html[data-mode='dark'] .gallery-nav {
 
 .thumbnail.active {
   border-color: var(--c-primary);
-  box-shadow: 0 0 0 3px rgba(37, 110, 255, 0.2);
+  box-shadow: 0 0 0 3px var(--c-focus-ring);
 }
 
 /* ========== PRODUCT DETAILS ========== */
@@ -239,7 +239,7 @@ html[data-mode='dark'] .gallery-nav {
 }
 
 .rating-stars {
-  color: var(--c-secondary);
+  color: var(--c-accent);
   font-size: 1.1rem;
   display: flex;
   gap: 2px;
@@ -288,7 +288,7 @@ html[data-mode='dark'] .gallery-nav {
 }
 
 .price-discounted {
-  color: var(--c-secondary);
+  color: var(--c-accent);
   font-size: 3rem;
   font-weight: 700;
 }
@@ -306,18 +306,18 @@ html[data-mode='dark'] .gallery-nav {
 }
 
 .stock-status.in-stock {
-  background-color: rgba(46, 213, 115, 0.1);
-  color: #27ae60;
+  background-color: color-mix(in srgb, var(--c-primary) 12%, var(--c-surface-1) 88%);
+  color: var(--c-primary);
 }
 
 .stock-status.low-stock {
-  background-color: rgba(255, 177, 66, 0.1);
-  color: #f39c12;
+  background-color: color-mix(in srgb, var(--c-accent) 12%, var(--c-surface-1) 88%);
+  color: var(--c-accent);
 }
 
 .stock-status.out-of-stock {
-  background-color: rgba(255, 71, 87, 0.1);
-  color: #e74c3c;
+  background-color: color-mix(in srgb, var(--c-text) 12%, var(--c-surface-1) 88%);
+  color: var(--c-text);
 }
 
 /* Quick Specs */
@@ -378,7 +378,7 @@ html[data-mode='dark'] .gallery-nav {
 
 .btn-quantity:hover:not(:disabled) {
   background-color: var(--c-primary);
-  color: #ffffff;
+  color: var(--c-primary-contrast);
 }
 
 .btn-quantity:disabled {
@@ -424,7 +424,7 @@ html[data-mode='dark'] .gallery-nav {
 .btn-primary {
   background-color: var(--c-primary);
   border-color: var(--c-primary);
-  color: #ffffff;
+  color: var(--c-primary-contrast);
   flex: 1;
   min-width: 200px;
 }
@@ -455,14 +455,14 @@ html[data-mode='dark'] .gallery-nav {
 .btn-icon:hover {
   background-color: var(--c-primary);
   border-color: var(--c-primary);
-  color: #ffffff;
+  color: var(--c-primary-contrast);
   transform: translateY(-2px);
 }
 
 .btn-icon.active {
-  background-color: var(--c-secondary);
-  border-color: var(--c-secondary);
-  color: #ffffff;
+  background-color: var(--c-accent);
+  border-color: var(--c-accent);
+  color: var(--c-primary-contrast);
 }
 
 /* Additional Info */
@@ -543,18 +543,18 @@ html[data-mode='dark'] .gallery-nav {
 
 .nav-link:hover {
   color: var(--c-primary);
-  background-color: rgba(37, 110, 255, 0.05);
+  background-color: color-mix(in srgb, var(--c-primary) 8%, var(--c-surface-1) 92%);
 }
 
 .nav-link.active {
   color: var(--c-primary);
-  background-color: rgba(37, 110, 255, 0.1);
+  background-color: color-mix(in srgb, var(--c-primary) 12%, var(--c-surface-1) 88%);
   font-weight: 600;
 }
 
 .badge-count {
   background-color: var(--c-primary);
-  color: #ffffff;
+  color: var(--c-primary-contrast);
   padding: 2px 8px;
   border-radius: 12px;
   font-size: 0.75rem;
@@ -638,18 +638,18 @@ html[data-mode='dark'] .gallery-nav {
 }
 
 .availability-badge.in-stock {
-  background-color: rgba(46, 213, 115, 0.15);
-  color: #27ae60;
+  background-color: color-mix(in srgb, var(--c-primary) 18%, var(--c-surface-1) 82%);
+  color: var(--c-primary);
 }
 
 .availability-badge.low-stock {
-  background-color: rgba(255, 177, 66, 0.15);
-  color: #f39c12;
+  background-color: color-mix(in srgb, var(--c-accent) 18%, var(--c-surface-1) 82%);
+  color: var(--c-accent);
 }
 
 .availability-badge.out-of-stock {
-  background-color: rgba(255, 71, 87, 0.15);
-  color: #e74c3c;
+  background-color: color-mix(in srgb, var(--c-text) 18%, var(--c-surface-1) 82%);
+  color: var(--c-text);
 }
 
 /* ========== REVIEWS ========== */
@@ -671,7 +671,7 @@ html[data-mode='dark'] .gallery-nav {
 .btn-outline-primary:hover {
   background-color: var(--c-primary);
   border-color: var(--c-primary);
-  color: #ffffff;
+  color: var(--c-primary-contrast);
 }
 
 /* Review Form */
@@ -736,7 +736,7 @@ html[data-mode='dark'] .gallery-nav {
 }
 
 .rating-input i {
-  color: var(--c-secondary);
+  color: var(--c-accent);
   cursor: pointer;
   transition: transform var(--motion-fast) var(--easing);
 }
@@ -801,8 +801,8 @@ html[data-mode='dark'] .gallery-nav {
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-secondary) 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-accent) 100%);
+  color: var(--c-primary-contrast);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1112,7 +1112,7 @@ html[data-mode='dark'] .gallery-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: color-mix(in srgb, var(--c-surface-1) 90%, transparent);
   border: none;
   width: 40px;
   height: 40px;
@@ -1198,18 +1198,18 @@ html[data-mode='dark'] .gallery-nav {
 }
 
 .badge-new {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-accent) 100%);
+  color: var(--c-primary-contrast);
 }
 
 .badge-discount {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--c-accent) 0%, var(--c-primary) 100%);
+  color: var(--c-primary-contrast);
 }
 
 .badge-out {
   background-color: var(--c-text-muted);
-  color: #ffffff;
+  color: var(--c-primary-contrast);
 }
 
 /* Gallery Navigation */
@@ -1217,7 +1217,7 @@ html[data-mode='dark'] .gallery-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: color-mix(in srgb, var(--c-surface-1) 90%, transparent);
   border: none;
   width: 40px;
   height: 40px;
@@ -1237,13 +1237,13 @@ html[data-mode='dark'] .gallery-nav {
 }
 
 html[data-mode='dark'] .gallery-nav {
-  background-color: rgba(52, 52, 52, 0.9);
+  background-color: color-mix(in srgb, var(--c-text) 90%, transparent);
   color: var(--c-text-primary);
 }
 
 .gallery-nav:hover {
   background-color: var(--c-primary);
-  color: #ffffff;
+  color: var(--c-primary-contrast);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -1286,5 +1286,5 @@ html[data-mode='dark'] .gallery-nav {
 
 .thumbnail.active {
   border-color: var(--c-primary);
-  box-shadow: 0 0 0 3px rgba(37, 110, 255, 0.2);
+  box-shadow: 0 0 0 3px var(--c-focus-ring);
 }

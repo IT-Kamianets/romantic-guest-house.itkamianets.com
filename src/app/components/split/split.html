@@ -1,0 +1,8 @@
+<div class="split" [ngClass]="{ 'split--reverse': reverse }">
+	<div class="split__content">
+		<ng-content select="[split-content]"></ng-content>
+	</div>
+	<div class="split__media">
+		<ng-content select="[split-media]"></ng-content>
+	</div>
+</div>

@@ -1,0 +1,15 @@
+<section class="section" [ngClass]="{ 'section--center': centered }">
+	<div class="section__header">
+		<div class="section__titles">
+			<p class="section__kicker" *ngIf="kicker">{{ kicker }}</p>
+			<h2 class="section__title" *ngIf="title">{{ title }}</h2>
+			<p class="section__subtitle" *ngIf="subtitle">{{ subtitle }}</p>
+		</div>
+		<div class="section__actions">
+			<ng-content select="[section-actions]"></ng-content>
+		</div>
+	</div>
+	<div class="section__body">
+		<ng-content></ng-content>
+	</div>
+</section>

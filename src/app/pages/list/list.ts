@@ -23,7 +23,8 @@ export class List implements OnInit {
 	products: Product[] = PRODUCTS;
 	filteredProducts: Product[] = [];
 
-	categories = ['All', 'Rooms', 'Cottages', 'Suites'];
+	categories = ['All', 'Deluxe', 'Apartment'];
+	filtersOpen = false;
 
 	filters: RoomFilters = {
 		category: 'All',
@@ -64,5 +65,9 @@ export class List implements OnInit {
 			default:
 				return rooms.sort((a, b) => a.price - b.price);
 		}
+	}
+
+	toggleFilters(): void {
+		this.filtersOpen = !this.filtersOpen;
 	}
 }

@@ -1,0 +1,21 @@
+.feature-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 12px;
+	color: var(--c-text-secondary);
+	font-size: 14px;
+}
+
+.feature-list li {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.feature-list i {
+	color: var(--c-primary);
+	font-size: 14px;
+}

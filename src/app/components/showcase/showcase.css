@@ -1,44 +1,39 @@
-﻿.location-teaser {
-	background: var(--c-bg-primary);
+.location-showcase__text {
+	color: var(--c-text-muted);
+	max-width: 520px;
 }
 
-.location-teaser__header {
+.location-showcase__address {
 	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-end;
-	justify-content: space-between;
-	gap: var(--sp-4);
-	margin-bottom: var(--sp-5);
+	align-items: center;
+	gap: var(--sp-2);
+	margin: var(--sp-3) 0;
+	color: var(--c-text-secondary);
+	font-weight: 600;
 }
 
-.location-teaser__grid {
+.location-showcase__address i {
+	color: var(--c-primary);
+}
+
+.location-showcase__media {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-	gap: var(--sp-4);
-	align-items: stretch;
+	gap: var(--sp-3);
 }
 
-.location-teaser__map {
+.location-showcase__map {
 	border-radius: var(--radius-card);
 	border: 1px solid var(--c-border);
 	box-shadow: var(--shadow-sm);
 	background: var(--c-bg-secondary);
 	padding: var(--sp-3);
-	display: grid;
-	gap: var(--sp-3);
-}
-
-.location-teaser__map-frame {
 	position: relative;
 	aspect-ratio: 16 / 9;
-	width: 100%;
-	border-radius: calc(var(--radius-card) - 6px);
 	overflow: hidden;
-	background: var(--c-bg-tertiary);
-	min-height: 200px;
+	min-height: 220px;
 }
 
-.location-teaser__map-frame iframe {
+.location-showcase__map iframe {
 	position: absolute;
 	inset: 0;
 	width: 100%;
@@ -46,33 +41,13 @@
 	border: 0;
 }
 
-.location-teaser__map-link {
+.location-showcase__link {
 	font-weight: 600;
 	color: var(--c-text-secondary);
 	text-decoration: none;
 }
 
-.location-teaser__map-link:hover {
+.location-showcase__link:hover {
 	color: var(--c-primary);
 	text-decoration: underline;
-}
-
-.location-teaser__list {
-	display: grid;
-	gap: var(--sp-3);
-}
-
-.location-teaser__item {
-	background: var(--c-bg-secondary);
-	border-radius: var(--radius-card);
-	padding: var(--sp-3) var(--sp-4);
-	border: 1px solid var(--c-border);
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	font-size: 14px;
-}
-
-.location-teaser__item strong {
-	color: var(--c-text-secondary);
 }

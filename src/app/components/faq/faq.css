@@ -1,33 +1,52 @@
-﻿:host {
+:host {
 	display: block;
 }
 
-section.bg-light {
-	background: var(--c-bg-tertiary) !important;
-	color: var(--c-text-primary);
+.faq {
+	background: var(--c-bg-tertiary);
 }
 
-h2,
-.fw-bold,
-.fw-semibold {
-	color: var(--c-text-secondary);
+.faq__header {
+	display: grid;
+	gap: var(--sp-2);
+	margin-bottom: var(--sp-4);
 }
 
-.text-secondary,
-.text-body-secondary {
-	color: var(--c-text-muted) !important;
+.faq__list {
+	display: grid;
+	gap: var(--sp-3);
 }
 
-.card {
+.faq-item {
+	border: 1px solid var(--c-border);
+	border-radius: var(--radius-card);
+	padding: var(--sp-3) var(--sp-4);
 	background: var(--c-bg-secondary);
 	box-shadow: var(--shadow-sm);
-	border-color: var(--c-border) !important;
 }
 
-.border {
-	border-color: var(--c-border) !important;
+.faq-item summary {
+	cursor: pointer;
+	font-weight: 600;
+	color: var(--c-text-secondary);
+	list-style: none;
 }
 
-.rounded-4 {
-	border-radius: var(--radius-card) !important;
+.faq-item summary::-webkit-details-marker {
+	display: none;
+}
+
+.faq-item summary::after {
+	content: "+";
+	float: right;
+	color: var(--c-text-muted);
+}
+
+.faq-item[open] summary::after {
+	content: "–";
+}
+
+.faq-item p {
+	margin: var(--sp-2) 0 0;
+	color: var(--c-text-muted);
 }

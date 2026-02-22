@@ -1,0 +1,23 @@
+.gallery-strip__row {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: minmax(220px, 1fr);
+	gap: var(--sp-3);
+	overflow-x: auto;
+	padding-bottom: 6px;
+	scroll-snap-type: x mandatory;
+}
+
+.gallery-strip__item {
+	border-radius: var(--radius-card);
+	overflow: hidden;
+	box-shadow: var(--shadow-sm);
+	scroll-snap-align: start;
+}
+
+.gallery-strip__item img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	display: block;
+}

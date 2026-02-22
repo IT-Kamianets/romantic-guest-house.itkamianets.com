@@ -85,13 +85,14 @@
             <!-- Price Section -->
             <div class="price-section mb-4">
               <div class="price-row">
-                <div class="price-current" *ngIf="!hasDiscount()">UAH {{ p.price.toFixed(0) }}</div>
+                <div class="price-current" *ngIf="!hasDiscount()">From UAH {{ p.price.toFixed(0) }}</div>
                 <div class="price-with-discount" *ngIf="hasDiscount()">
-                  <span class="price-old">UAH {{ p.price.toFixed(0) }}</span>
-                  <span class="price-discounted">UAH {{ getDiscountedPrice().toFixed(0) }}</span>
+                  <span class="price-old">From UAH {{ p.price.toFixed(0) }}</span>
+                  <span class="price-discounted">From UAH {{ getDiscountedPrice().toFixed(0) }}</span>
                 </div>
               </div>
-              <div class="small text-secondary">per night - seasonal rates</div>
+              <div class="small text-secondary">per night (seasonal)</div>
+              <div class="small text-secondary">Exact price depends on dates - confirm during booking request.</div>
               
               <!-- Availability Status -->
               <div class="stock-status" [ngClass]="getStockClass()">
@@ -150,14 +151,14 @@
                 <i class="bi bi-clock"></i>
                 <div>
                   <strong>Check-in / Check-out</strong>
-                  <span>14:00 / 12:00</span>
+                  <span>14:00-00:00 / 11:00-12:00</span>
                 </div>
               </div>
               <div class="info-item">
                 <i class="bi bi-cup-hot"></i>
                 <div>
                   <strong>Breakfast options</strong>
-                  <span>From 70 UAH per person</span>
+                  <span>Breakfast available (extra)</span>
                 </div>
               </div>
               <div class="info-item">
@@ -338,7 +339,7 @@
             <div class="related-product-info">
               <h6 class="related-product-title">{{ related.title }}</h6>
               <div class="related-product-footer">
-                <span class="related-product-price">UAH {{ related.price.toFixed(0) }}</span>
+                <span class="related-product-price">From UAH {{ related.price.toFixed(0) }} / night (seasonal)</span>
                 <div class="rating-stars small" *ngIf="related.rating">
                   <i class="bi bi-star-fill"></i>
                   <span>{{ related.rating }}</span>

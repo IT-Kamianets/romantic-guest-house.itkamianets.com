@@ -60,7 +60,7 @@ export class FormPage implements OnInit {
 		this.route.queryParams.subscribe((params) => {
 			const id = params['id'];
 			if (id) {
-				const found = PRODUCTS.find((p) => p.id === Number(id));
+				const found = PRODUCTS.find((p) => p.id === id);
 				if (found) {
 					this.selectedProduct = found;
 					this.checkoutForm.patchValue({ roomPreference: found.title });
