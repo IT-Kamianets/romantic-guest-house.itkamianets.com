@@ -1,12 +1,14 @@
 ﻿import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { Product, RoomSpecifications } from '../../../models/Product.model';
+import { ContactSheetService } from '../../../services/contact-sheet.service';
+import { TranslatePipe } from '../../../pipes/translate.pipe';
 
 @Component({
 	selector: 'app-list-item',
 	standalone: true,
-	imports: [CommonModule, RouterLink],
+	imports: [CommonModule, RouterLink, TranslatePipe],
 	templateUrl: './list-item.html',
 	styleUrls: ['./list-item.css'],
 })
@@ -15,34 +17,17 @@ export class ListItem {
 	@Input() variant: 'card' | 'horizontal' = 'card';
 	@Input() showDetails = true;
 
-	constructor(private router: Router) {}
+	constructor(private contactSheet: ContactSheetService) {}
 
 	get highlights(): string[] {
 		if (this.product?.highlights?.length) {
 			return this.product.highlights.slice(0, 3);
 		}
-
-		const specs: RoomSpecifications = this.product?.specifications ?? {};
-		const items: string[] = [];
-
-		if (specs.Sleeps) {
-			items.push(`Sleeps ${specs.Sleeps}`);
-		}
-		if (specs.Bed) {
-			items.push(`${specs.Bed}`);
-		}
-		if (specs.View) {
-			items.push(`${specs.View}`);
-		}
-		if (specs.Breakfast) {
-			items.push(`${specs.Breakfast}`);
-		}
-
-		return items.slice(0, 4);
+		return [];
 	}
 
-	bookNow(event: Event): void {
+	openContact(event: Event): void {
 		event.stopPropagation();
-		this.router.navigate(['/booking'], { queryParams: { id: this.product.id } });
+		this.contactSheet.open(this.product?.title ?? null);
 	}
 }

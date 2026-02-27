@@ -6,11 +6,14 @@ import { Product, ProductReview } from '../../models/Product.model';
 import { PRODUCTS } from '../../data/products';
 import { PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { ContactSheetService } from '../../services/contact-sheet.service';
+import { I18nService } from '../../services/i18n.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: './profile.html',
   styleUrls: ['./profile.css']
 })
@@ -38,6 +41,8 @@ export class Profile implements OnInit, OnDestroy {
 
   private products = PRODUCTS;
   private platformId = inject(PLATFORM_ID);
+  private contactSheet = inject(ContactSheetService);
+  private i18n = inject(I18nService);
   private routeSub: any;
 
   constructor(
@@ -115,18 +120,18 @@ export class Profile implements OnInit, OnDestroy {
       this.isFavorite = false;
       const updated = favs.filter(x => x !== id);
       localStorage.setItem('favorites', JSON.stringify(updated));
-      this.showNotification('Removed from saved rooms');
+      this.showNotification(this.i18n.t('profile.favoriteRemoved'));
     } else {
       this.isFavorite = true;
       favs.push(id);
       localStorage.setItem('favorites', JSON.stringify(favs));
-      this.showNotification('Saved to favorites');
+      this.showNotification(this.i18n.t('profile.favoriteAdded'));
     }
   }
 
-  startBooking(): void {
+  openContact(): void {
     if (!this.product) return;
-    this.router.navigate(['/booking'], { queryParams: { id: this.product.id, rooms: this.quantity } });
+    this.contactSheet.open(this.product.title);
   }
 
   showNotification(msg: string): void {
@@ -176,7 +181,7 @@ export class Profile implements OnInit, OnDestroy {
     }
 
     this.product.reviews.unshift(review);
-    this.showNotification('Thanks for your review!');
+    this.showNotification(this.i18n.t('profile.reviewThanks'));
     this.resetReviewForm();
     this.showReviewForm = false;
   }
@@ -216,7 +221,7 @@ export class Profile implements OnInit, OnDestroy {
   copyToClipboard(text: string): void {
     if (!this.isBrowser()) return;
     navigator.clipboard.writeText(text).then(() => {
-      this.showNotification('Link copied');
+      this.showNotification(this.i18n.t('profile.linkCopied'));
     });
   }
 
@@ -237,9 +242,11 @@ export class Profile implements OnInit, OnDestroy {
 
   getStockStatus(): string {
     if (!this.product) return '';
-    if (this.product.stock === 0) return 'Sold out';
-    if (this.product.stock < 5) return `Only ${this.product.stock} rooms left`;
-    return 'Available now';
+    if (this.product.stock === 0) return this.i18n.t('profile.stockOut');
+    if (this.product.stock < 5) {
+      return this.i18n.t('profile.stockLow', { count: this.product.stock });
+    }
+    return this.i18n.t('profile.stockAvailable');
   }
 
   getStockClass(): string {
@@ -250,7 +257,8 @@ export class Profile implements OnInit, OnDestroy {
   }
 
   formatDate(date: Date): string {
-    return new Date(date).toLocaleDateString('en-GB', {
+    const locale = this.i18n.currentLang() === 'ua' ? 'uk-UA' : 'en-GB';
+    return new Date(date).toLocaleDateString(locale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'

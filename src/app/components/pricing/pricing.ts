@@ -1,12 +1,18 @@
-﻿import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ContactSheetService } from '../../services/contact-sheet.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
 	selector: 'app-pricing',
-	imports: [RouterLink],
+	imports: [TranslatePipe],
 	templateUrl: './pricing.html',
 	styleUrl: './pricing.css',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Pricing {}
+export class Pricing {
+	private readonly contactSheet = inject(ContactSheetService);
 
+	openContact(): void {
+		this.contactSheet.open();
+	}
+}

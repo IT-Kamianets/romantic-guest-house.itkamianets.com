@@ -1,14 +1,21 @@
-﻿import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
 import { Section } from '../../components/section/section';
 import { Split } from '../../components/split/split';
 import { FeatureList } from '../../components/feature-list/feature-list';
 import { CtaBanner } from '../../components/cta-banner/cta-banner';
+import { ContactSheetService } from '../../services/contact-sheet.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
 	selector: 'app-content',
-	imports: [RouterLink, Section, Split, FeatureList, CtaBanner],
+	imports: [Section, Split, FeatureList, CtaBanner, TranslatePipe],
 	templateUrl: './content.html',
 	styleUrl: './content.css',
 })
-export class Content {}
+export class Content {
+	private readonly contactSheet = inject(ContactSheetService);
+
+	openContact(): void {
+		this.contactSheet.open();
+	}
+}

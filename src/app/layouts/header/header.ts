@@ -2,22 +2,24 @@ import { ChangeDetectionStrategy, Component, HostListener, inject } from '@angul
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { PLATFORM_ID } from '@angular/core';
 import { filter } from 'rxjs/operators';
-import { isPlatformBrowser } from '@angular/common';
-import { ThemeService, ThemeName } from '../../services/theme.service';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { ContactSheetService } from '../../services/contact-sheet.service';
+import { I18nService, Lang } from '../../services/i18n.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
 	selector: 'app-header',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [RouterLink, RouterLinkActive],
+	imports: [CommonModule, RouterLink, RouterLinkActive, TranslatePipe],
 	templateUrl: './header.html',
 	styleUrl: './header.css',
 })
 export class Header {
-	protected readonly theme = inject(ThemeService);
+	protected readonly i18n = inject(I18nService);
+	protected readonly contactSheet = inject(ContactSheetService);
 	private readonly router = inject(Router);
 	private readonly platformId = inject(PLATFORM_ID);
 	protected isMenuOpen = false;
-	protected isThemeMenuOpen = false;
 	protected isScrolled = false;
 	protected isHome = false;
 
@@ -46,16 +48,12 @@ export class Header {
 		this.isMenuOpen = false;
 	}
 
-	protected toggleThemeMenu(): void {
-		this.isThemeMenuOpen = !this.isThemeMenuOpen;
+	protected setLang(lang: Lang): void {
+		this.i18n.setLang(lang);
 	}
 
-	protected closeThemeMenu(): void {
-		this.isThemeMenuOpen = false;
-	}
-
-	protected setTheme(theme: ThemeName): void {
-		this.theme.setTheme(theme);
-		this.closeThemeMenu();
+	protected openLinks(): void {
+		this.contactSheet.open();
+		this.closeMenu();
 	}
 }

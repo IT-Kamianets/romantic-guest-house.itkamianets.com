@@ -2,15 +2,14 @@
 	<div class="footer__container">
 		<div class="footer__top">
 			<div class="footer__left">
-				<div class="footer__brand">Romantic Guest House</div>
+				<div class="footer__brand">{{ 'footer.brand' | t }}</div>
 				<p class="footer__description">
-					Boutique guest house in Kamianets-Podilskyi with romantic, oriental-inspired
-					interiors, a private courtyard, and quiet canyon calm.
+					{{ 'footer.description' | t }}
 				</p>
 				<div class="footer__contacts">
 					<div class="footer__contact">
 						<i class="bi bi-geo-alt"></i>
-						<span>Rus’ka Street 3, Kamianets-Podilskyi, 32318, Ukraine</span>
+						<span>{{ 'showcase.address' | t }}</span>
 					</div>
 					<a href="tel:+380675101504" class="footer__contact">
 						<i class="bi bi-telephone"></i>
@@ -25,27 +24,26 @@
 
 			<div class="footer__right">
 				<div class="footer__links-group">
-					<h3 class="footer__links-title">Stay</h3>
+					<h3 class="footer__links-title">{{ 'footer.stayTitle' | t }}</h3>
 					<nav class="footer__links">
-						<a routerLink="/rooms" class="footer__link">Rooms & Prices</a>
-						<a routerLink="/amenities" class="footer__link">Amenities</a>
-						<a routerLink="/booking" class="footer__link">Booking</a>
-						<a routerLink="/gallery" class="footer__link">Gallery</a>
+						<a routerLink="/rooms" class="footer__link">{{ 'nav.roomsLong' | t }}</a>
+						<a routerLink="/amenities" class="footer__link">{{ 'nav.amenities' | t }}</a>
+						<a routerLink="/gallery" class="footer__link">{{ 'nav.gallery' | t }}</a>
 					</nav>
 				</div>
 
 				<div class="footer__links-group">
-					<h3 class="footer__links-title">Explore</h3>
+					<h3 class="footer__links-title">{{ 'footer.exploreTitle' | t }}</h3>
 					<nav class="footer__links">
-						<a routerLink="/location" class="footer__link">Location</a>
-						<a routerLink="/" class="footer__link">Home</a>
+						<a routerLink="/location" class="footer__link">{{ 'nav.location' | t }}</a>
+						<a routerLink="/" class="footer__link">{{ 'nav.home' | t }}</a>
 						<a
 							href="https://www.google.com/maps?q=Rus%27ka%20Street%203%2C%20Kamianets-Podilskyi%2C%20Ukraine"
 							class="footer__link"
 							target="_blank"
 							rel="noopener"
 						>
-							Open in Google Maps
+							{{ 'footer.openMap' | t }}
 						</a>
 						<a
 							href="https://www.google.com/maps?q=Rus%27ka%20Street%203%2C%20Kamianets-Podilskyi%2C%20Ukraine"
@@ -53,7 +51,7 @@
 							target="_blank"
 							rel="noopener"
 						>
-							Guest house map
+							{{ 'footer.mapLabel' | t }}
 						</a>
 					</nav>
 				</div>
@@ -64,19 +62,84 @@
 
 		<div class="footer__bottom">
 			<div class="footer__copyright">
-				<span>(c) {{ year }} Romantic Guest House. All rights reserved.</span>
-				<span class="footer__ukraine">Kamianets-Podilskyi, Ukraine</span>
+				<span>{{ 'footer.copyright' | t: { year: year } }}</span>
+				<span class="footer__ukraine">{{ 'footer.city' | t }}</span>
 			</div>
-			<div class="footer__social">
-				<a
-					href="https://www.instagram.com/romanticguesthouse/"
-					aria-label="Instagram"
-					class="footer__social-link"
-					target="_blank"
-					rel="noopener"
-				>
-					<i class="bi bi-instagram"></i>
-				</a>
+			<div class="footer__actions">
+				<div class="footer__theme" (keydown.escape)="closeThemeMenu()">
+					<button
+						class="footer__theme-toggle"
+						type="button"
+						(click)="toggleThemeMenu()"
+						[attr.aria-expanded]="isThemeMenuOpen"
+						aria-haspopup="true"
+						aria-controls="footer-theme-menu"
+					>
+						<i class="bi bi-palette"></i>
+						<span>{{ 'header.theme' | t }}</span>
+					</button>
+					<div
+						id="footer-theme-menu"
+						class="footer__theme-popover"
+						[class.is-open]="isThemeMenuOpen"
+						role="menu"
+					>
+						<p class="footer__theme-label">{{ 'theme.label' | t }}</p>
+						<div class="footer__theme-grid" role="radiogroup" aria-label="Theme">
+							<button
+								type="button"
+								class="footer__theme-option"
+								[class.active]="theme.currentTheme() === 'light'"
+								role="radio"
+								[attr.aria-checked]="theme.currentTheme() === 'light'"
+								(click)="setTheme('light')"
+							>
+								{{ 'theme.light' | t }}
+							</button>
+							<button
+								type="button"
+								class="footer__theme-option"
+								[class.active]="theme.currentTheme() === 'dark'"
+								role="radio"
+								[attr.aria-checked]="theme.currentTheme() === 'dark'"
+								(click)="setTheme('dark')"
+							>
+								{{ 'theme.dark' | t }}
+							</button>
+							<button
+								type="button"
+								class="footer__theme-option"
+								[class.active]="theme.currentTheme() === 'itkp'"
+								role="radio"
+								[attr.aria-checked]="theme.currentTheme() === 'itkp'"
+								(click)="setTheme('itkp')"
+							>
+								{{ 'theme.itkp' | t }}
+							</button>
+							<button
+								type="button"
+								class="footer__theme-option"
+								[class.active]="theme.currentTheme() === 'hotel'"
+								role="radio"
+								[attr.aria-checked]="theme.currentTheme() === 'hotel'"
+								(click)="setTheme('hotel')"
+							>
+								{{ 'theme.hotel' | t }}
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="footer__social">
+					<a
+						href="https://github.com/IT-Kamianets/romantic-guest-house.itkamianets.com"
+						aria-label="GitHub"
+						class="footer__social-link"
+						target="_blank"
+						rel="noopener"
+					>
+						<i class="bi bi-github"></i>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>

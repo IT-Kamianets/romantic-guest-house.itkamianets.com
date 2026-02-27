@@ -8,27 +8,31 @@
 
 			<div class="hero__content">
 
-				<span class="section-kicker">Boutique Guest House</span>
+				<span class="section-kicker">{{ 'hero.kicker' | t }}</span>
 
 				<h1 class="hero__title">
 
-					Romantic Guest House - quiet canyon stays in Kamianets-Podilskyi
+					{{ 'hero.title' | t }}
 
 				</h1>
 
 				<p class="hero__subtitle">
 
-					Oriental-inspired rooms, a private courtyard, and a hot vat (chan) by the Smotrych
-
-					canyon - a calm stay within walking distance of the Old Town.
+					{{ 'hero.subtitle' | t }}
 
 				</p>
 
 				<div class="hero__actions">
 
-					<a routerLink="/rooms" class="btn btn-primary btn-lg">View rooms</a>
+					<a routerLink="/rooms" class="btn btn-primary btn-lg">{{ 'hero.primaryCta' | t }}</a>
 
-					<a routerLink="/booking" class="btn btn-outline-primary btn-lg">Request a booking</a>
+					<button
+						class="btn btn-outline-primary btn-lg"
+						type="button"
+						(click)="openContact()"
+					>
+						{{ 'hero.secondaryCta' | t }}
+					</button>
 
 				</div>
 
@@ -36,7 +40,7 @@
 
 					<div>
 
-						<span class="hero__detail-label">Check-in</span>
+						<span class="hero__detail-label">{{ 'hero.checkIn' | t }}</span>
 
 						<span class="hero__detail-value">14:00-00:00</span>
 
@@ -44,7 +48,7 @@
 
 					<div>
 
-						<span class="hero__detail-label">Check-out</span>
+						<span class="hero__detail-label">{{ 'hero.checkOut' | t }}</span>
 
 						<span class="hero__detail-value">11:00-12:00</span>
 
@@ -52,9 +56,9 @@
 
 					<div>
 
-						<span class="hero__detail-label">Location</span>
+						<span class="hero__detail-label">{{ 'hero.location' | t }}</span>
 
-						<span class="hero__detail-value">Rus'ka Street 3, Kamianets-Podilskyi, 32318, Ukraine</span>
+						<span class="hero__detail-value">{{ 'showcase.address' | t }}</span>
 
 					</div>
 
@@ -74,7 +78,7 @@
 
 						(error)="setHeroFallback()"
 
-						alt="Romantic Guest House exterior and courtyard - Kamianets-Podilskyi"
+						[alt]="'hero.imageAlt' | t"
 
 						class="hero__image"
 
@@ -82,9 +86,9 @@
 
 					<div class="hero__caption">
 
-						<div class="hero__caption-title">Courtyard calm</div>
+						<div class="hero__caption-title">{{ 'hero.captionTitle' | t }}</div>
 
-						<div class="hero__caption-text">Hot vat (chan) and quiet seating</div>
+						<div class="hero__caption-text">{{ 'hero.captionText' | t }}</div>
 
 					</div>
 
@@ -92,7 +96,7 @@
 
 				<div class="hero__badge">
 
-					<span class="badge-soft">Boutique comfort - Riverside calm</span>
+					<span class="badge-soft">{{ 'hero.badge' | t }}</span>
 
 				</div>
 
@@ -103,4 +107,3 @@
 	</div>
 
 </section>
-

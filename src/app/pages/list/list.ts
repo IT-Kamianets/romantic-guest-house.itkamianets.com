@@ -1,10 +1,12 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { Product } from '../../models/Product.model';
 import { ListItem } from './list-item/list-item';
 import { PRODUCTS } from '../../data/products';
+import { I18nService } from '../../services/i18n.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 interface RoomFilters {
 	category: string;
@@ -15,19 +17,24 @@ interface RoomFilters {
 @Component({
 	selector: 'app-list',
 	standalone: true,
-	imports: [CommonModule, FormsModule, ListItem],
+	imports: [CommonModule, FormsModule, ListItem, TranslatePipe],
 	templateUrl: './list.html',
 	styleUrls: ['./list.css'],
 })
 export class List implements OnInit {
+	private readonly i18n = inject(I18nService);
 	products: Product[] = PRODUCTS;
 	filteredProducts: Product[] = [];
 
-	categories = ['All', 'Deluxe', 'Apartment'];
+	categories = [
+		{ id: 'rooms.categoryAll', labelKey: 'rooms.categoryAll' },
+		{ id: 'rooms.categoryDeluxe', labelKey: 'rooms.categoryDeluxe' },
+		{ id: 'rooms.categoryApartment', labelKey: 'rooms.categoryApartment' },
+	];
 	filtersOpen = false;
 
 	filters: RoomFilters = {
-		category: 'All',
+		category: 'rooms.categoryAll',
 		searchQuery: '',
 		sortBy: 'price-asc',
 	};
@@ -39,15 +46,15 @@ export class List implements OnInit {
 	applyFilters(): void {
 		let result = [...this.products];
 
-		if (this.filters.category !== 'All') {
+		if (this.filters.category !== 'rooms.categoryAll') {
 			result = result.filter((room) => room.category === this.filters.category);
 		}
 
 		if (this.filters.searchQuery) {
 			const query = this.filters.searchQuery.toLowerCase();
 			result = result.filter((room) =>
-				room.title.toLowerCase().includes(query) ||
-				room.description.toLowerCase().includes(query)
+				this.i18n.t(room.title).toLowerCase().includes(query) ||
+				this.i18n.t(room.description).toLowerCase().includes(query)
 			);
 		}
 
@@ -60,7 +67,7 @@ export class List implements OnInit {
 			case 'price-desc':
 				return rooms.sort((a, b) => b.price - a.price);
 			case 'name':
-				return rooms.sort((a, b) => a.title.localeCompare(b.title));
+				return rooms.sort((a, b) => this.i18n.t(a.title).localeCompare(this.i18n.t(b.title)));
 			case 'price-asc':
 			default:
 				return rooms.sort((a, b) => a.price - b.price);

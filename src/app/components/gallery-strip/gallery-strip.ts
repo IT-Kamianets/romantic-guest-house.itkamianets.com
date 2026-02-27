@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Section } from '../section/section';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
 	selector: 'app-gallery-strip',
 	standalone: true,
-	imports: [Section, RouterLink],
+	imports: [CommonModule, Section, RouterLink, TranslatePipe],
 	templateUrl: './gallery-strip.html',
 	styleUrl: './gallery-strip.css',
 	changeDetection: ChangeDetectionStrategy.OnPush,

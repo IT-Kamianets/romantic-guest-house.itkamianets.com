@@ -1,10 +1,10 @@
 <main class="amenities-page">
 	<section class="amenities-hero">
 		<div class="container-lg px-4 py-5">
-			<p class="section-kicker">Amenities</p>
-			<h1 class="section-title">Everything you need for a quiet stay</h1>
+			<p class="section-kicker">{{ 'amenities.kicker' | t }}</p>
+			<h1 class="section-title">{{ 'amenities.title' | t }}</h1>
 			<p class="section-subtitle">
-				Romantic details, courtyard rituals, and practical comforts for an easy stay.
+				{{ 'amenities.subtitle' | t }}
 			</p>
 		</div>
 	</section>
@@ -12,12 +12,14 @@
 	<section class="amenities-popular">
 		<div class="container-lg px-4 py-5">
 			<app-section
-				title="Most popular amenities"
-				subtitle="The essentials guests ask for most often."
+				[title]="'amenities.popularTitle' | t"
+				[subtitle]="'amenities.popularSubtitle' | t"
 			>
 				<app-pill-grid [items]="popularAmenities"></app-pill-grid>
 				<div section-actions>
-					<a routerLink="/booking" class="btn btn-outline-primary">Request a booking</a>
+					<button class="btn btn-outline-primary" type="button" (click)="openContact()">
+						{{ 'amenities.popularCta' | t }}
+					</button>
 				</div>
 			</app-section>
 		</div>
@@ -26,14 +28,14 @@
 	<section class="amenities-all">
 		<div class="container-lg px-4 pb-5">
 			<app-section
-				title="All amenities"
-				subtitle="Everything available across rooms and public areas."
+				[title]="'amenities.allTitle' | t"
+				[subtitle]="'amenities.allSubtitle' | t"
 			>
 				<div class="amenities-masonry">
 					<section class="amenity-card" *ngFor="let group of amenityGroups">
 						<div class="amenities-group__title">
 							<i class="bi" [ngClass]="group.icon"></i>
-							<h3>{{ group.title }}</h3>
+							<h3>{{ group.title | t }}</h3>
 						</div>
 						<ul
 							class="amenities-group__list"
@@ -41,8 +43,8 @@
 						>
 							<li *ngFor="let item of group.items">
 								<i class="bi bi-check2"></i>
-								<span>{{ item.label }}</span>
-								<span class="badge-soft badge-soft--paid" *ngIf="item.paid">Paid separately</span>
+								<span>{{ item.label | t }}</span>
+								<span class="badge-soft badge-soft--paid" *ngIf="item.paid">{{ 'amenities.paid' | t }}</span>
 							</li>
 						</ul>
 					</section>
@@ -57,22 +59,22 @@
 				<div class="amenities-note">
 					<i class="bi bi-slash-circle"></i>
 					<div>
-						<h4>Non-smoking throughout</h4>
-						<p>Indoor spaces are smoke-free for guest comfort.</p>
+						<h4>{{ 'amenities.notes1Title' | t }}</h4>
+						<p>{{ 'amenities.notes1Body' | t }}</p>
 					</div>
 				</div>
 				<div class="amenities-note">
 					<i class="bi bi-paw"></i>
 					<div>
-						<h4>Pets on request</h4>
-						<p>Let us know in advance and we will confirm.</p>
+						<h4>{{ 'amenities.notes2Title' | t }}</h4>
+						<p>{{ 'amenities.notes2Body' | t }}</p>
 					</div>
 				</div>
 				<div class="amenities-note">
 					<i class="bi bi-translate"></i>
 					<div>
-						<h4>Languages spoken</h4>
-						<p>Ukrainian and Russian.</p>
+						<h4>{{ 'amenities.notes3Title' | t }}</h4>
+						<p>{{ 'amenities.notes3Body' | t }}</p>
 					</div>
 				</div>
 			</div>
@@ -82,12 +84,14 @@
 	<section class="amenities-cta">
 		<div class="container-lg px-4 pb-5">
 			<app-cta-banner
-				kicker="Ready to relax?"
-				title="Plan a romantic stay"
-				body="Send a booking request and we'll confirm availability and the exact rate for your dates."
+				[kicker]="'amenities.ctaKicker' | t"
+				[title]="'amenities.ctaTitle' | t"
+				[body]="'amenities.ctaBody' | t"
 			>
-				<a routerLink="/booking" class="btn btn-primary">Request a booking</a>
-				<a href="tel:+380675101504" class="btn btn-outline-primary">Call</a>
+				<button class="btn btn-primary" type="button" (click)="openContact()">
+					{{ 'amenities.ctaContact' | t }}
+				</button>
+				<a href="tel:+380675101504" class="btn btn-outline-primary">{{ 'amenities.ctaCall' | t }}</a>
 			</app-cta-banner>
 		</div>
 	</section>

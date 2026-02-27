@@ -1,11 +1,9 @@
 <main class="gallery-page">
 	<section class="gallery-hero">
 		<div class="container-lg px-4 py-5">
-			<p class="section-kicker">Gallery</p>
-			<h1 class="section-title">A visual tour of Romantic Guest House</h1>
-			<p class="section-subtitle">
-				Courtyard moments, boutique rooms, and terrace views around the canyon.
-			</p>
+			<p class="section-kicker">{{ 'gallery.kicker' | t }}</p>
+			<h1 class="section-title">{{ 'gallery.title' | t }}</h1>
+			<p class="section-subtitle">{{ 'gallery.subtitle' | t }}</p>
 		</div>
 	</section>
 
@@ -17,24 +15,24 @@
 						class="gallery-chip"
 						type="button"
 						*ngFor="let category of categories"
-						[class.active]="selectedCategory === category"
-						(click)="selectedCategory = category; onFiltersChanged()"
-						[attr.aria-pressed]="selectedCategory === category"
+						[class.active]="selectedCategory === category.id"
+						(click)="selectedCategory = category.id; onFiltersChanged()"
+						[attr.aria-pressed]="selectedCategory === category.id"
 					>
-						{{ category }}
+						{{ category.labelKey | t }}
 					</button>
 				</div>
 				<div class="gallery-toolbar__search">
 					<input
 						type="text"
 						class="form-control"
-						placeholder="Search rooms, apartment, courtyard"
+						[placeholder]="'gallery.searchPlaceholder' | t"
 						[(ngModel)]="searchTerm"
 						(ngModelChange)="onFiltersChanged()"
 					/>
 				</div>
 				<div class="gallery-toolbar__count">
-					<span class="badge-soft">{{ filteredItems.length }} photos</span>
+					<span class="badge-soft">{{ 'gallery.photos' | t: { count: filteredItems.length } }}</span>
 				</div>
 			</div>
 
@@ -44,19 +42,19 @@
 					type="button"
 					*ngFor="let item of pagedItems"
 					(click)="openModal(item)"
-					[aria-label]="'Open photo of ' + item.title"
+					[aria-label]="item.title | t"
 				>
-					<img [src]="item.imageUrl" [alt]="item.title" loading="lazy" />
+					<img [src]="item.imageUrl" [alt]="item.title | t" loading="lazy" />
 					<div class="gallery-item__overlay">
-						<h3>{{ item.title }}</h3>
-						<p>{{ item.subtitle }}</p>
+						<h3>{{ item.title | t }}</h3>
+						<p>{{ item.subtitle | t }}</p>
 					</div>
 				</button>
 			</div>
 
 			<ng-template #noResults>
 				<div class="gallery-empty">
-					<p>No results found. Try a different category.</p>
+					<p>{{ 'gallery.noResults' | t }}</p>
 				</div>
 			</ng-template>
 
@@ -64,7 +62,7 @@
 				<ul class="pagination justify-content-center mb-0">
 					<li class="page-item" [class.disabled]="currentPage === 1">
 						<button class="page-link" type="button" (click)="prevPage()">
-							Previous
+							{{ 'gallery.previous' | t }}
 						</button>
 					</li>
 					<li
@@ -78,7 +76,7 @@
 					</li>
 					<li class="page-item" [class.disabled]="currentPage === totalPages">
 						<button class="page-link" type="button" (click)="nextPage()">
-							Next
+							{{ 'gallery.next' | t }}
 						</button>
 					</li>
 				</ul>
@@ -89,12 +87,14 @@
 	<section class="gallery-cta">
 		<div class="container-lg px-4 pb-5">
 			<app-cta-banner
-				kicker="Ready to plan?"
-				title="Want these dates?"
-				body="Send a booking request and we'll confirm availability for your stay."
+				[kicker]="'gallery.ctaKicker' | t"
+				[title]="'gallery.ctaTitle' | t"
+				[body]="'gallery.ctaBody' | t"
 			>
-				<a routerLink="/booking" class="btn btn-primary">Request a booking</a>
-				<a href="tel:+380675101504" class="btn btn-outline-primary">Call</a>
+				<button class="btn btn-primary" type="button" (click)="openContact()">
+					{{ 'gallery.ctaContact' | t }}
+				</button>
+				<a href="tel:+380675101504" class="btn btn-outline-primary">{{ 'gallery.ctaCall' | t }}</a>
 			</app-cta-banner>
 		</div>
 	</section>
@@ -105,11 +105,11 @@
 				<i class="bi bi-x-lg"></i>
 			</button>
 			<div class="gallery-modal-media">
-				<img class="gallery-modal-img" [src]="activeItem.imageUrl" [alt]="activeItem.title" />
+				<img class="gallery-modal-img" [src]="activeItem.imageUrl" [alt]="activeItem.title | t" />
 			</div>
 			<div class="gallery-modal__body">
-				<h3>{{ activeItem.title }}</h3>
-				<p>{{ activeItem.subtitle }}</p>
+				<h3>{{ activeItem.title | t }}</h3>
+				<p>{{ activeItem.subtitle | t }}</p>
 			</div>
 		</div>
 	</div>

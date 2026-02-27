@@ -1,16 +1,16 @@
 <section class="gallery-strip section--B">
 	<div class="container-lg px-4 py-5">
 		<app-section
-			kicker="Gallery"
-			title="A glimpse of Romantic Guest House"
-			subtitle="Highlights from rooms, courtyard, and terrace views."
+			[kicker]="'galleryStrip.kicker' | t"
+			[title]="'galleryStrip.title' | t"
+			[subtitle]="'galleryStrip.subtitle' | t"
 		>
 			<div section-actions>
-				<a routerLink="/gallery" class="btn btn-outline-primary">View full gallery</a>
+				<a routerLink="/gallery" class="btn btn-outline-primary">{{ 'galleryStrip.cta' | t }}</a>
 			</div>
 			<div class="gallery-strip__row">
 				<div class="gallery-strip__item" *ngFor="let image of images">
-					<img [src]="image.src" [alt]="image.alt" loading="lazy" />
+					<img [src]="image.src" [alt]="image.alt | t" loading="lazy" />
 				</div>
 			</div>
 		</app-section>

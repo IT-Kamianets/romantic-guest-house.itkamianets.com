@@ -1,0 +1,30 @@
+<nav class="mobile-nav" aria-label="Primary">
+	<a
+		class="mobile-nav__item"
+		routerLink="/rooms"
+		routerLinkActive="mobile-nav__item--active"
+	>
+		<i class="bi bi-house-door"></i>
+		<span>{{ 'nav.rooms' | t }}</span>
+	</a>
+	<a
+		class="mobile-nav__item"
+		routerLink="/gallery"
+		routerLinkActive="mobile-nav__item--active"
+	>
+		<i class="bi bi-grid"></i>
+		<span>{{ 'nav.gallery' | t }}</span>
+	</a>
+	<a
+		class="mobile-nav__item"
+		routerLink="/location"
+		routerLinkActive="mobile-nav__item--active"
+	>
+		<i class="bi bi-geo-alt"></i>
+		<span>{{ 'nav.location' | t }}</span>
+	</a>
+	<button class="mobile-nav__item" type="button" (click)="openLinks()">
+		<i class="bi bi-link-45deg"></i>
+		<span>{{ 'nav.links' | t }}</span>
+	</button>
+</nav>

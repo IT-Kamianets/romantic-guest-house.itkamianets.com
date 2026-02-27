@@ -1,33 +1,32 @@
 <section class="location-showcase section--A">
 	<div class="container-lg px-4 py-5">
 		<app-section
-			kicker="Location"
-			title="Between the canyon and the Old Town"
-			subtitle="A quiet address within walking distance of Old Town sights and the canyon edge."
+			[kicker]="'showcase.kicker' | t"
+			[title]="'showcase.title' | t"
+			[subtitle]="'showcase.subtitle' | t"
 		>
 			<app-split>
 				<div split-content>
 					<p class="location-showcase__text">
-						Romantic Guest House sits on Rus’ka Street, a calm corner with quick access to the
-						main landmarks.
+						{{ 'showcase.body' | t }}
 					</p>
 					<app-feature-list
 						[items]="[
-							'Old Town — about 900 m',
-							'Kamianets-Podilskyi Fortress — about 1.1 km',
-							'Smotrych canyon viewpoints — nearby'
+							'showcase.feature1',
+							'showcase.feature2',
+							'showcase.feature3'
 						]"
 					></app-feature-list>
 					<div class="location-showcase__address">
 						<i class="bi bi-geo-alt"></i>
-						<span>Rus’ka Street 3, Kamianets-Podilskyi, 32318, Ukraine</span>
+						<span>{{ 'showcase.address' | t }}</span>
 					</div>
-					<a routerLink="/location" class="btn btn-outline-primary">View location</a>
+					<a routerLink="/location" class="btn btn-outline-primary">{{ 'showcase.cta' | t }}</a>
 				</div>
 				<div split-media class="location-showcase__media">
 					<div class="location-showcase__map">
 						<iframe
-							title="Rus’ka Street 3, Kamianets-Podilskyi map"
+							[title]="'showcase.mapLabel' | t"
 							src="https://www.google.com/maps?q=Rus%27ka%20Street%203%2C%20Kamianets-Podilskyi%2C%20Ukraine&output=embed"
 							loading="lazy"
 							referrerpolicy="no-referrer-when-downgrade"
@@ -39,7 +38,7 @@
 						target="_blank"
 						rel="noopener"
 					>
-						Open in Google Maps
+						{{ 'showcase.mapLink' | t }}
 					</a>
 				</div>
 			</app-split>

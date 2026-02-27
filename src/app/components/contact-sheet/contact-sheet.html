@@ -1,0 +1,44 @@
+<div
+	class="contact-sheet"
+	*ngIf="contactSheet.isOpen()"
+	(click)="close()"
+>
+	<div
+		class="contact-sheet__panel"
+		role="dialog"
+		aria-modal="true"
+		(click)="$event.stopPropagation()"
+	>
+		<div class="contact-sheet__header">
+			<div>
+				<p class="contact-sheet__kicker">{{ 'contactSheet.kicker' | t }}</p>
+				<h2 class="contact-sheet__title">{{ 'contactSheet.title' | t }}</h2>
+				<p class="contact-sheet__subtitle">{{ 'contactSheet.subtitle' | t }}</p>
+				<p class="contact-sheet__context" *ngIf="contactSheet.contextLabel()">
+					{{ 'contactSheet.contextPrefix' | t: { context: ((contactSheet.contextLabel() ?? '') | t) } }}
+				</p>
+			</div>
+			<button type="button" class="contact-sheet__close" (click)="close()" aria-label="Close">
+				<i class="bi bi-x-lg"></i>
+			</button>
+		</div>
+
+		<div class="contact-sheet__links">
+			<a
+				*ngFor="let platform of platforms"
+				[href]="platform.url"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="contact-sheet__link"
+			>
+				<span class="contact-sheet__link-icon">
+					<i class="bi" [ngClass]="platform.icon"></i>
+				</span>
+				<span class="contact-sheet__link-label">{{ platform.label }}</span>
+				<span class="contact-sheet__link-arrow">
+					<i class="bi bi-arrow-up-right"></i>
+				</span>
+			</a>
+		</div>
+	</div>
+</div>

@@ -1,26 +1,24 @@
 <section class="wellness-spotlight home-wellness section--B">
 	<div class="container-lg px-4 py-5">
 		<app-section
-			kicker="Courtyard wellness"
-			title="Warm rituals, calm atmosphere"
-			subtitle="Relax in the private courtyard with the hot vat (chan), sauna, and massage options available by request."
+			[kicker]="'wellness.kicker' | t"
+			[title]="'wellness.title' | t"
+			[subtitle]="'wellness.subtitle' | t"
 		>
 			<app-split>
 				<div split-content>
 					<p class="wellness-spotlight__body">
-						A quiet courtyard space designed for slow evenings. Guests can request the hot vat
-						(chan) and wellness services as needed. Please confirm availability and paid
-						options during your booking request.
+						{{ 'wellness.body' | t }}
 					</p>
 					<app-feature-list [items]="features"></app-feature-list>
 				</div>
 				<div split-media class="wellness-spotlight__media">
 					<app-media-card
 						src="assets/img/romantic-guest-house/courtyard-chan/chan-03.jpg"
-						alt="Romantic Guest House courtyard vat"
-						badge="By request"
-						captionTitle="Courtyard calm"
-						captionText="Hot vat (chan) and quiet seating"
+						[alt]="'wellness.mediaAlt' | t"
+						[badge]="'wellness.mediaBadge' | t"
+						[captionTitle]="'wellness.mediaTitle' | t"
+						[captionText]="'wellness.mediaText' | t"
 					></app-media-card>
 				</div>
 			</app-split>

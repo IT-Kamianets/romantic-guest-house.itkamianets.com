@@ -1,12 +1,12 @@
 <section class="amenities-teaser section--A">
 	<div class="container-lg px-4 py-5">
 		<app-section
-			kicker="Most popular amenities"
-			title="Everyday comfort, boutique calm"
-			subtitle="Top requests from recent stays at Romantic Guest House."
+			[kicker]="'features.kicker' | t"
+			[title]="'features.title' | t"
+			[subtitle]="'features.subtitle' | t"
 		>
 			<div section-actions>
-				<a routerLink="/amenities" class="btn btn-outline-primary">Explore amenities</a>
+				<a routerLink="/amenities" class="btn btn-outline-primary">{{ 'features.cta' | t }}</a>
 			</div>
 			<app-pill-grid [items]="items"></app-pill-grid>
 		</app-section>

@@ -3,31 +3,35 @@
 	[ngClass]="{ 'room-card--horizontal': variant === 'horizontal' }"
 >
 	<div class="room-card__media">
-		<img [src]="product.image" [alt]="product.title" loading="lazy" />
-		<span class="room-card__tag">{{ product.category }}</span>
+		<img [src]="product.image" [alt]="product.title | t" loading="lazy" />
+		<span class="room-card__tag">{{ product.category | t }}</span>
 	</div>
 
 	<div class="room-card__content">
 		<div class="room-card__header">
-			<h3 class="room-card__title">{{ product.title }}</h3>
-			<p class="room-card__description">{{ product.description }}</p>
+			<h3 class="room-card__title">{{ product.title | t }}</h3>
+			<p class="room-card__description">{{ product.description | t }}</p>
 		</div>
 
 		<div class="room-card__chips">
-			<span class="chip" *ngFor="let item of highlights">{{ item }}</span>
+			<span class="chip" *ngFor="let item of highlights">{{ item | t }}</span>
 		</div>
 
 		<div class="room-card__footer">
 			<div>
-				<span class="room-card__price">From UAH {{ product.price }} / night (seasonal)</span>
-				<span class="room-card__note">Exact price depends on dates—confirm during booking request.</span>
+				<span class="room-card__price">
+					{{ 'profile.priceFrom' | t: { price: product.price } }} · {{ 'profile.perNight' | t }}
+				</span>
+				<span class="room-card__note">
+					{{ 'rooms.note' | t }}
+				</span>
 			</div>
 			<div class="room-card__actions">
 				<a *ngIf="showDetails" routerLink="/rooms" class="btn btn-outline-secondary">
-					See details
+					{{ 'rooms.seeDetails' | t }}
 				</a>
-				<button class="btn btn-primary" type="button" (click)="bookNow($event)">
-					Request booking
+				<button class="btn btn-primary" type="button" (click)="openContact($event)">
+					{{ 'rooms.contact' | t }}
 				</button>
 			</div>
 		</div>

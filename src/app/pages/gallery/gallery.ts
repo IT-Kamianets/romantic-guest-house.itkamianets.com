@@ -1,8 +1,10 @@
 ﻿import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CtaBanner } from '../../components/cta-banner/cta-banner';
-import { RouterLink } from '@angular/router';
+import { ContactSheetService } from '../../services/contact-sheet.service';
+import { I18nService } from '../../services/i18n.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 type GalleryItem = {
 	id: number;
@@ -14,11 +16,13 @@ type GalleryItem = {
 
 @Component({
 	selector: 'app-gallery',
-	imports: [NgFor, NgIf, FormsModule, CtaBanner, RouterLink],
+	imports: [NgFor, NgIf, FormsModule, CtaBanner, TranslatePipe],
 	templateUrl: './gallery.html',
 	styleUrl: './gallery.css',
 })
 export class Gallery {
+	private readonly contactSheet = inject(ContactSheetService);
+	private readonly i18n = inject(I18nService);
 	searchTerm = '';
 	selectedCategory = 'All';
 	pageSize = 12;
@@ -26,12 +30,12 @@ export class Gallery {
 	activeItem: GalleryItem | null = null;
 
 	categories = [
-		'All',
-		'Rooms',
-		'Apartment',
-		'Courtyard & Vat',
-		'Terrace & Views',
-		'Details',
+		{ id: 'All', labelKey: 'gallery.categoryAll' },
+		{ id: 'Rooms', labelKey: 'gallery.categoryRooms' },
+		{ id: 'Apartment', labelKey: 'gallery.categoryApartment' },
+		{ id: 'Courtyard & Vat', labelKey: 'gallery.categoryCourtyard' },
+		{ id: 'Terrace & Views', labelKey: 'gallery.categoryTerrace' },
+		{ id: 'Details', labelKey: 'gallery.categoryDetails' },
 	];
 
 	items: GalleryItem[] = [
@@ -437,7 +441,7 @@ export class Gallery {
 				return true;
 			}
 
-			const haystack = `${item.title} ${item.subtitle} ${item.tags.join(' ')}`.toLowerCase();
+			const haystack = `${this.i18n.t(item.title)} ${this.i18n.t(item.subtitle)} ${item.tags.join(' ')}`.toLowerCase();
 			return haystack.includes(search);
 		});
 	}
@@ -484,5 +488,9 @@ export class Gallery {
 
 	closeModal(): void {
 		this.activeItem = null;
+	}
+
+	openContact(): void {
+		this.contactSheet.open();
 	}
 }

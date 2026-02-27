@@ -1,13 +1,15 @@
 <section class="final-cta section--A">
 	<div class="container-lg px-4 py-5">
 		<app-cta-banner
-			kicker="Plan your stay"
-			title="Plan a romantic stay in Kamianets-Podilskyi"
-			body="Send a booking request and we'll confirm availability and the exact rate for your dates."
+			[kicker]="'finalCta.kicker' | t"
+			[title]="'finalCta.title' | t"
+			[body]="'finalCta.body' | t"
 		>
-			<a routerLink="/booking" class="btn btn-primary btn-lg">Request a booking</a>
+			<button class="btn btn-primary btn-lg" type="button" (click)="openContact()">
+				{{ 'finalCta.contact' | t }}
+			</button>
 			<a href="tel:+380675101504" class="btn btn-outline-secondary btn-lg">
-				Call +380 67 510 15 04
+				{{ 'finalCta.call' | t }}
 			</a>
 		</app-cta-banner>
 	</div>

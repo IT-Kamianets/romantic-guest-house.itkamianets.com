@@ -3,24 +3,18 @@
 		<div class="container-lg px-4 py-5">
 			<div class="rooms-hero__grid">
 				<div class="rooms-hero__intro">
-					<p class="section-kicker">Rooms & Prices</p>
-					<h1 class="section-title">Rooms for romantic stays</h1>
-					<p class="section-subtitle">
-						Choose a deluxe double or a spacious apartment with a balcony. Rates vary by
-						dates and are confirmed with your booking request.
-					</p>
+					<p class="section-kicker">{{ 'rooms.heroKicker' | t }}</p>
+					<h1 class="section-title">{{ 'rooms.heroTitle' | t }}</h1>
+					<p class="section-subtitle">{{ 'rooms.heroSubtitle' | t }}</p>
 				</div>
 				<div class="rooms-hero__aside">
 					<div class="rooms-hero__card">
-						<div class="badge-soft">Seasonal pricing</div>
-						<p>
-							Prices vary by dates and demand. Use the booking request to confirm the exact
-							rate for your stay.
-						</p>
+						<div class="badge-soft">{{ 'rooms.seasonal' | t }}</div>
+						<p>{{ 'rooms.seasonalBody' | t }}</p>
 					</div>
 					<div class="rooms-hero__card rooms-hero__card--soft">
-						<h3>Booking tips</h3>
-						<p>Let us know your dates and room preference. We confirm the exact rate by request.</p>
+						<h3>{{ 'rooms.tipsTitle' | t }}</h3>
+						<p>{{ 'rooms.tipsBody' | t }}</p>
 					</div>
 				</div>
 			</div>
@@ -31,15 +25,15 @@
 		<div class="container-lg px-4">
 			<div class="rooms-toolbar__bar">
 				<div class="rooms-toolbar__chips">
-					<span class="rooms-toolbar__label">Filter</span>
+					<span class="rooms-toolbar__label">{{ 'rooms.filterLabel' | t }}</span>
 					<button
 						*ngFor="let category of categories"
 						class="chip"
-						[class.active]="filters.category === category"
-						(click)="filters.category = category; applyFilters()"
+						[class.active]="filters.category === category.id"
+						(click)="filters.category = category.id; applyFilters()"
 						type="button"
 					>
-						{{ category }}
+						{{ category.labelKey | t }}
 					</button>
 				</div>
 				<button
@@ -49,26 +43,26 @@
 					[attr.aria-expanded]="filtersOpen"
 					aria-controls="rooms-filter-panel"
 				>
-					Filters
+					{{ 'rooms.filtersToggle' | t }}
 					<i class="bi bi-sliders"></i>
 				</button>
 				<div id="rooms-filter-panel" class="rooms-toolbar__panel" [class.is-open]="filtersOpen">
 					<div class="rooms-toolbar__search">
-						<label class="form-label">Search</label>
+						<label class="form-label">{{ 'rooms.searchLabel' | t }}</label>
 						<input
 							type="text"
 							class="form-control"
-							placeholder="Search by room or feature"
+							[placeholder]="'rooms.searchPlaceholder' | t"
 							[(ngModel)]="filters.searchQuery"
 							(ngModelChange)="applyFilters()"
 						/>
 					</div>
 					<div class="rooms-toolbar__sort">
-						<label class="form-label">Sort</label>
+						<label class="form-label">{{ 'rooms.sortLabel' | t }}</label>
 						<select class="form-select" [(ngModel)]="filters.sortBy" (change)="applyFilters()">
-							<option value="price-asc">Price: low to high</option>
-							<option value="price-desc">Price: high to low</option>
-							<option value="name">Name A-Z</option>
+							<option value="price-asc">{{ 'rooms.sortPriceAsc' | t }}</option>
+							<option value="price-desc">{{ 'rooms.sortPriceDesc' | t }}</option>
+							<option value="name">{{ 'rooms.sortName' | t }}</option>
 						</select>
 					</div>
 				</div>
@@ -88,12 +82,12 @@
 			</div>
 
 			<div class="rooms-empty" *ngIf="filteredProducts.length === 0">
-				<p class="mb-2">No rooms match your filters.</p>
+				<p class="mb-2">{{ 'rooms.emptyTitle' | t }}</p>
 				<button
 					class="btn btn-outline-primary"
-					(click)="filters = { category: 'All', searchQuery: '', sortBy: 'price-asc' }; applyFilters()"
+					(click)="filters = { category: 'rooms.categoryAll', searchQuery: '', sortBy: 'price-asc' }; applyFilters()"
 				>
-					Reset filters
+					{{ 'rooms.resetFilters' | t }}
 				</button>
 			</div>
 		</div>
