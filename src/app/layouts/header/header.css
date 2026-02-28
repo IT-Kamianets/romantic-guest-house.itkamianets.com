@@ -58,6 +58,15 @@
 	box-shadow: none;
 }
 
+@media (min-width: 901px) {
+	.header--transparent {
+		background: color-mix(in srgb, var(--c-surface-1) 94%, transparent);
+		border-bottom: 1px solid var(--c-border);
+		box-shadow: var(--shadow-sm);
+		backdrop-filter: blur(10px);
+	}
+}
+
 .header__container {
 	max-width: var(--container);
 	margin: 0 auto;
